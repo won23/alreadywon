@@ -4,6 +4,7 @@ import { getSortedPostsData, IPost } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
 import { Box } from '@chakra-ui/core';
+import styles from '../styles/';
 
 export async function getStaticProps(): Promise<{ props }> {
   const allPostsData = getSortedPostsData();
@@ -40,6 +41,13 @@ export default function Blog({ allPostsData }: IProps) {
             ))}
           </ul>
         </section>
+        {
+          <Box mt={['3rem', 0, 0]}>
+            <Link href="/">
+              <a>← Back to blog</a>
+            </Link>
+          </Box>
+        }
       </Box>
     </Layout>
   );
