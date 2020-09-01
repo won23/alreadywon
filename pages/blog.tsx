@@ -40,6 +40,13 @@ export default function Blog({ allPostsData }: IProps) {
             ))}
           </ul>
         </section>
+        {
+          <Box mt={['3rem', 0, 0]}>
+            <Link href="/">
+              <a>← Back to blog</a>
+            </Link>
+          </Box>
+        }
       </Box>
     </Layout>
   );
