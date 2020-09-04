@@ -3,25 +3,30 @@ import {
   Flex,
   Heading,
   FlexProps,
-  Link,
   Text,
   Icon,
   PseudoBox,
+  Link,
 } from '@chakra-ui/core';
+import NextLink from 'next/link';
+
 import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/Gi';
-
 const NavItem = (props) => (
-  <Link href={props.link}>
-    <PseudoBox
-      mr={6}
-      mt={{ base: 4, md: 0 }}
-      display="block"
-      _hover={{ fontWeight: 'semibold' }}
-    >
-      <PseudoBox>{props.children}</PseudoBox>
-    </PseudoBox>
-  </Link>
+  <NextLink href={props.href}>
+    <Link>
+      <PseudoBox
+        mr={6}
+        mt={{ base: 4, md: 0 }}
+        display="block"
+        fontWeight="semibold"
+        _hover={{ fontWeight: 'bold' }}
+        fontSize="xl"
+      >
+        <PseudoBox>{props.children}</PseudoBox>
+      </PseudoBox>
+    </Link>
+  </NextLink>
 );
 
 export interface INavbarProps {}
@@ -32,9 +37,8 @@ export default function Navbar(props: INavbarProps) {
   const navFlexSetting: FlexProps = {
     as: 'nav',
     color: 'white',
-    px: 3,
+    px: '6rem',
     py: 4,
-    bg: 'teal.500',
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -57,9 +61,11 @@ export default function Navbar(props: INavbarProps) {
 
   return (
     <Flex {...navFlexSetting}>
-      <Flex mr={6}>
-        <Heading>Tim Won</Heading>
-      </Flex>
+      <Box mr={6}>
+        <NextLink href="/">
+          <Link>{/* <Heading>Tim Won</Heading> */}</Link>
+        </NextLink>
+      </Box>
 
       <Box
         display={{ xs: 'block', sm: 'none' }}
@@ -72,7 +78,6 @@ export default function Navbar(props: INavbarProps) {
         display={{ xs: show ? 'block' : 'none', sm: 'flex' }}
         width={{ xs: 'full', sm: 'auto' }}
         alignItems={'center'}
-        flexGrow={2}
       >
         {navItems.map((navItem, index) => (
           <NavItem key={index} href={navItem.path}>
