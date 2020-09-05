@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Navbar from './Navbar';
 
 export interface ILayoutProps {
-  home: boolean;
+  home?: boolean;
   children?: any;
 }
 
@@ -23,7 +23,6 @@ export default function Layout(props: ILayoutProps) {
     <Box>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-
         <meta name="description" content="A personal site about me" />
         <meta
           property="og:image"
@@ -48,9 +47,12 @@ export default function Layout(props: ILayoutProps) {
           <main> {props.children}</main>
         </Box>
       ) : (
-        <Flex {...navFlexSetting}>
-          <main> {props.children}</main>
-        </Flex>
+        <Box>
+          <Navbar></Navbar>
+          <Flex {...navFlexSetting}>
+            <main> {props.children}</main>
+          </Flex>
+        </Box>
       )}
     </Box>
   );
