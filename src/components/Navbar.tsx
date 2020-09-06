@@ -76,6 +76,7 @@ export default function Navbar(props: INavbarProps) {
     },
   ];
   const handleNavItemClicked = (href: string) => {
+    setShow(!show);
     router.push(href);
   };
 
