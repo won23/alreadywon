@@ -1,5 +1,6 @@
 import { ThemeProvider, CSSReset } from '@chakra-ui/core';
 import '../styles/global.css';
+import customTheme from '../styles/theme';
 
 interface IProps {
   [key: string]: any;
@@ -7,7 +8,7 @@ interface IProps {
 
 export default function App({ Component, pageProps }: IProps) {
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={customTheme}>
       <CSSReset />
       <Component {...pageProps} />
     </ThemeProvider>

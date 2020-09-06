@@ -14,7 +14,6 @@ import { useRouter } from 'next/router';
 
 import { useState, MouseEvent } from 'react';
 import { GiHamburgerMenu, GiRayGun } from 'react-icons/Gi';
-import styles from '../styles/utils.module.css';
 export interface INavItemProps {
   href: string;
   children?;
@@ -25,12 +24,13 @@ export interface INavbarProps {}
 const NavItem = (props: INavItemProps) => {
   const navItemStyle: PseudoBoxProps = {
     px: '1rem',
-    py: '2rem',
+    py: '1rem',
     width: '100%',
-    _hover: { backgroundColor: 'gray.200' },
     cursor: 'pointer',
     border: { xs: '1px', sm: 'none' },
     borderColor: 'gray.100',
+    role: 'group',
+    color: 'gray.500',
   };
 
   return (
@@ -39,14 +39,13 @@ const NavItem = (props: INavItemProps) => {
       onClick={() => props.handleNavItemClicked(props.href)}
     >
       <PseudoBox
-        mr={6}
-        mt={{ base: 4, md: 0 }}
         display="block"
-        fontWeight="semibold"
-        _hover={{ fontWeight: 'bold' }}
+        // fontWeight="semibold"
+        _hover={{ fontWeight: 'semibold' }}
+        _groupHover={{ color: 'black' }}
         fontSize="xl"
       >
-        <PseudoBox>{props.children}</PseudoBox>
+        {props.children}
       </PseudoBox>
     </PseudoBox>
   );
@@ -91,7 +90,7 @@ export default function Navbar(props: INavbarProps) {
         <Box flex={1} textAlign="center" width="100%">
           <NextLink href="/">
             <Link>
-              <Heading className={styles.siteTitle}>TW</Heading>
+              <Heading>TW</Heading>
             </Link>
           </NextLink>
         </Box>

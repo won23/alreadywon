@@ -2,7 +2,6 @@ import { Button, Flex, Heading, Text } from '@chakra-ui/core';
 import Link from 'next/link';
 import * as React from 'react';
 import Layout from '../components/Layout';
-import styles from '../styles/utils.module.css';
 
 export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
@@ -21,9 +20,7 @@ export default function Home(props: IHomeProps) {
           px={{ xs: '3rem', md: '10rem' }}
           py={{ xs: '4rem' }}
         >
-          <Heading as="h1" className={styles.siteTitle}>
-            ALREADY WON
-          </Heading>
+          <Heading as="h1">ALREADY WON</Heading>
           <Text fontSize="lg" maxW="40rem">
             A personal website dedicated to those who may already have
           </Text>
