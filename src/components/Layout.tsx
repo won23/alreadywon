@@ -16,7 +16,7 @@ export default function Layout(props: ILayoutProps) {
     justifyContent: 'center',
     alignItems: 'center',
     wrap: 'wrap',
-    maxW: '36rem',
+    maxW: '48rem',
     margin: '3rem auto 6rem',
   };
   return (

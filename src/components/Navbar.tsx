@@ -90,7 +90,9 @@ export default function Navbar(props: INavbarProps) {
         <Box flex={1} textAlign="center" width="100%">
           <NextLink href="/">
             <Link>
-              <Heading>TW</Heading>
+              <Heading as="h1" size="xl">
+                TW
+              </Heading>
             </Link>
           </NextLink>
         </Box>
