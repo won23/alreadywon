@@ -17,7 +17,7 @@ export default function Layout(props: ILayoutProps) {
     alignItems: 'flex-start',
     wrap: 'wrap',
     maxW: '48rem',
-    margin: '3rem auto 6rem',
+    margin: '2rem auto 6rem',
   };
   return (
     <Box>

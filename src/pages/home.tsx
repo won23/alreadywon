@@ -45,15 +45,73 @@ export default function Home(props: IHomeProps) {
           </Box>
         </Flex>
         <Divider my="2rem" backgroundColor="gray" width="100%" />
+        <Flex
+          flexDirection="column"
+          alignItems="center"
+          width="100%"
+          bg="gray.200"
+          padding="1.5rem"
+          borderRadius="1rem"
+        >
+          <Heading as="h2" size="md" mb={'2rem'}>
+            Things I'm up to
+          </Heading>
+          <Flex
+            flexDirection={{ xs: 'column', sm: 'row' }}
+            justifyContent="space-between"
+            width="100%"
+            flexWrap="wrap"
+          >
+            <Box flex={1}>
+              <Heading size="sm" as="h3">
+                Living
+              </Heading>
+              <Text fontSize="sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                sit amet turpis vel turpis mattis efficitur. Morbi euismod ante
+                leo.
+              </Text>
+            </Box>
+            <Divider orientation="vertical" />
 
-        <Heading as="h2" size="md" mb={4}>
-          Contact me?
-        </Heading>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu
-          tincidunt tortor aliquam nulla facilisi cras.
-        </Text>
+            <Box flex={1}>
+              <Heading size="sm" as="h3">
+                Working
+              </Heading>
+              <Text fontSize="xs">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                sit amet turpis vel turpis mattis efficitur. Morbi euismod ante
+                leo.
+              </Text>
+            </Box>
+            <Divider orientation="vertical" />
+
+            <Box flex={1}>
+              <Heading size="sm" as="h3">
+                Doing
+              </Heading>
+              <Text fontSize="sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                sit amet turpis vel turpis mattis efficitur. Morbi euismod ante
+                leo.
+              </Text>
+            </Box>
+          </Flex>
+        </Flex>
+
+        <Divider orientation="vertical" />
+
+        <Divider my="2rem" backgroundColor="gray" width="100%" />
+        <Flex flexDirection="column" alignItems="center">
+          <Heading as="h2" size="md" mb={4}>
+            Contact me?
+          </Heading>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu
+            tincidunt tortor aliquam nulla facilisi cras.
+          </Text>
+        </Flex>
       </Flex>
     </Layout>
   );
