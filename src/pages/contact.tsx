@@ -26,12 +26,12 @@ export default function Contact(props: IContactProps) {
 
   function ContactItem(props) {
     return (
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" my={{ xs: '1rem', sm: '0rem' }}>
         <Heading size="sm" as="h3">
           {props.title}
         </Heading>
         <Divider width="10%" borderColor="black"></Divider>
-        <ChakraLink href={props.src}>
+        <ChakraLink href={props.src} isExternal>
           {props.linkName ? props.linkName : props.src}
         </ChakraLink>
       </Flex>
@@ -40,9 +40,9 @@ export default function Contact(props: IContactProps) {
 
   return (
     <Layout>
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" px={'1rem'}>
         <Heading>Want to get in touch?</Heading>
-        <Flex mt={'4rem'}>
+        <Flex mt={'2rem'} flexWrap="wrap">
           {contactItems.map((item, index) => {
             if (index + 1 === contactItems.length) {
               // last one
