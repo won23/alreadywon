@@ -14,7 +14,7 @@ export default function Layout(props: ILayoutProps) {
     width: '100%',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     wrap: 'wrap',
     maxW: '48rem',
     margin: '3rem auto 6rem',
