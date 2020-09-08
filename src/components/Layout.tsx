@@ -7,9 +7,8 @@ export interface ILayoutProps {
   children?: any;
 }
 
+export const siteTitle = "Tim Won's Website";
 export default function Layout(props: ILayoutProps) {
-  const siteTitle = "Tim Won's Website";
-
   const navFlexSetting: FlexProps = {
     width: '100%',
     flexDirection: 'column',
@@ -18,9 +17,10 @@ export default function Layout(props: ILayoutProps) {
     wrap: 'wrap',
     maxW: '48rem',
     margin: '2rem auto 6rem',
+    px: '2rem',
   };
   return (
-    <Box>
+    <Box w="100%">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="A personal site about me" />
@@ -42,6 +42,7 @@ export default function Layout(props: ILayoutProps) {
           backgroundPosition={{ xs: 'top', md: 'center' }}
           backgroundRepeat="no-repeat"
           height="100vh"
+          width="100%"
           backgroundSize={{ xs: '300% auto', md: '100% auto' }}
         >
           <main> {props.children}</main>

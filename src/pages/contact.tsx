@@ -40,7 +40,7 @@ export default function Contact(props: IContactProps) {
 
   return (
     <Layout>
-      <Flex flexDirection="column" px={'1rem'}>
+      <Flex flexDirection="column">
         <Heading>Want to get in touch?</Heading>
         <Flex mt={'2rem'} flexWrap="wrap">
           {contactItems.map((item, index) => {

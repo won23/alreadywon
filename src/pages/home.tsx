@@ -5,12 +5,7 @@ export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
   return (
     <Layout>
-      <Flex
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        padding="1rem"
-      >
+      <Flex flexDirection="column" justifyContent="center" alignItems="center">
         <Flex
           flexDirection={{ xs: 'column', sm: 'row' }}
           justifyContent="center"
@@ -20,7 +15,7 @@ export default function Home(props: IHomeProps) {
             <Image
               src="/images/profile.jpg"
               alt="me"
-              size="2xs"
+              size={{ xs: '3xs', sm: '2xs' }}
               borderRadius="2rem"
               mx="auto"
             ></Image>
@@ -53,7 +48,7 @@ export default function Home(props: IHomeProps) {
           padding="1.5rem"
           borderRadius="1rem"
         >
-          <Heading as="h2" size="md" mb={'2rem'}>
+          <Heading as="h2" size="md">
             Things I'm up to
           </Heading>
           <Flex
@@ -62,7 +57,7 @@ export default function Home(props: IHomeProps) {
             width="100%"
             flexWrap="wrap"
           >
-            <Box flex={1}>
+            <Box flex={1} mt={'1rem'}>
               <Heading size="sm" as="h3">
                 Living
               </Heading>
@@ -74,11 +69,11 @@ export default function Home(props: IHomeProps) {
             </Box>
             <Divider orientation="vertical" />
 
-            <Box flex={1}>
+            <Box flex={1} mt={'1rem'}>
               <Heading size="sm" as="h3">
                 Working
               </Heading>
-              <Text fontSize="xs">
+              <Text fontSize="sm">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
                 sit amet turpis vel turpis mattis efficitur. Morbi euismod ante
                 leo.
@@ -86,7 +81,7 @@ export default function Home(props: IHomeProps) {
             </Box>
             <Divider orientation="vertical" />
 
-            <Box flex={1}>
+            <Box flex={1} mt={'1rem'}>
               <Heading size="sm" as="h3">
                 Doing
               </Heading>
