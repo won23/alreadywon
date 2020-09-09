@@ -51,12 +51,9 @@ export default function Blog({ data }: IProps) {
             );
           })}
         </Box>
-        <Divider
-          orientation="vertical"
-          mx="3rem"
-          minHeight="10rem"
-          display={{ xs: 'none', sm: 'block' }}
-        ></Divider>
+        <Box display={{ xs: 'none', sm: 'block' }}>
+          <Divider orientation="vertical" mx="3rem" minHeight="10rem"></Divider>
+        </Box>
         <Box minW="10rem" display={{ xs: 'none', sm: 'block' }}>
           <Heading mb="2rem">Tags</Heading>
           <List styleType="disc">
