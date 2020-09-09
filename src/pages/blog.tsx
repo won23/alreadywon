@@ -10,10 +10,12 @@ import {
   List,
   ListItem,
   Divider,
+  Badge,
 } from '@chakra-ui/core';
+import { useState, useEffect } from 'react';
+import TagList from '../components/TagList';
 export async function getStaticProps(): Promise<{ props }> {
   const data = getSortedPostsData();
-  console.log('data', data);
   return {
     props: {
       data,
@@ -28,6 +30,29 @@ interface IProps {
 
 export default function Blog({ data }: IProps) {
   const { allPostsData, uniqueTagCount } = data;
+  const [posts, setPosts] = useState(allPostsData);
+  const [view, setView] = useState('');
+
+  const tagClickHandler = (tag) => {
+    console.log('click');
+    setView(tag);
+  };
+
+  const tagRemoveHandler = (tag) => {
+    setView(null);
+  };
+
+  useEffect(() => {
+    if (view) {
+      const filtered = allPostsData.filter((item) => {
+        return item.tags.includes(view);
+      });
+      setPosts(filtered);
+    } else {
+      setPosts(allPostsData);
+    }
+  }, [view]);
+
   return (
     <Layout>
       <Grid gridTemplateColumns={'1fr auto auto'} width="100%" height="100%">
@@ -35,7 +60,8 @@ export default function Blog({ data }: IProps) {
           <Heading as="h1" mb="2rem">
             Thoughts and Other Stuff
           </Heading>
-          {allPostsData?.map(({ id, date, title, description }) => {
+
+          {posts?.map(({ id, date, title, description }) => {
             return (
               <Box key={id}>
                 <Heading as="h2" fontSize="md">
@@ -54,20 +80,13 @@ export default function Blog({ data }: IProps) {
         <Box display={{ xs: 'none', sm: 'block' }}>
           <Divider orientation="vertical" mx="3rem" minHeight="10rem"></Divider>
         </Box>
-        <Box minW="10rem" display={{ xs: 'none', sm: 'block' }}>
-          <Heading mb="2rem">Tags</Heading>
-          <List styleType="disc">
-            {Object.keys(uniqueTagCount).map((tag) => {
-              return (
-                <ListItem fontSize="sm">
-                  <Link>
-                    {tag} ({uniqueTagCount[tag]})
-                  </Link>
-                </ListItem>
-              );
-            })}
-          </List>
-        </Box>
+        <TagList
+          posts={posts}
+          uniqueTagCount={uniqueTagCount}
+          tagClickHandler={tagClickHandler}
+          tagRemoveHandler={tagRemoveHandler}
+          view={view}
+        ></TagList>
       </Grid>
     </Layout>
   );
