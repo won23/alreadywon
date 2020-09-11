@@ -19,7 +19,7 @@ export interface ISortedPostData {
   uniqueTagCount: { [key: string]: number };
 }
 
-export function getSortedPostsData(): SortedData {
+export function getSortedPostsData(): ISortedPostData {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   let allTags = [];
