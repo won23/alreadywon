@@ -4,6 +4,7 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 import Date from '../../components/Date';
 import { Box, Link, Heading, Text } from '@chakra-ui/core';
+import Reference from '../../components/Reference';
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
   return {
@@ -27,16 +28,14 @@ export default function Post({ postData }) {
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <Box as="article">
+      <Box as="article" mb="1rem">
         <Heading as="h1">{postData.title}</Heading>
         <Date dateString={postData.date} />
         <Box dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></Box>
       </Box>
-      <Box mt={['3rem', 0, 0]}>
-        <Link as={NextLink} href="/blog">
-          <a>← Back to blog</a>
-        </Link>
-      </Box>
+      <Reference link={{ href: '/blog' }}>
+        <a>← Back to blog</a>
+      </Reference>
     </Layout>
   );
 }
