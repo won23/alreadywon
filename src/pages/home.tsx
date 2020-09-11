@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { Box, Heading, Flex, Image, Text, Divider } from '@chakra-ui/core';
 import Layout from '../components/Layout';
+import Reference, { ILink } from '../components/Reference';
 export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
+  const homeInfo: ILink = {
+    href:
+      'https://www.google.com/maps/place/North+Bethesda,+MD/@39.0430774,-77.1551229,13z/data=!3m1!4b1!4m5!3m4!1s0x89b7cc3bfabff901:0x50407ec368483348!8m2!3d39.0445535!4d-77.1188678',
+    external: true,
+  };
+
   return (
     <Layout>
       <Flex flexDirection="column" justifyContent="center" alignItems="center">
@@ -10,6 +17,7 @@ export default function Home(props: IHomeProps) {
           flexDirection={{ xs: 'column', sm: 'row' }}
           justifyContent="center"
           alignItems="center"
+          width="100%"
         >
           <Box flex={1}>
             <Image
@@ -21,23 +29,26 @@ export default function Home(props: IHomeProps) {
             ></Image>
           </Box>
 
-          <Box pt={{ xs: '1rem', md: '0' }} flex={1}>
+          <Flex
+            pt={{ xs: '1rem', md: '0' }}
+            flex={1}
+            flexDirection="column"
+            width="100%"
+          >
             <Heading
               as="h2"
               size="md"
               mb={4}
               textAlign={{ xs: 'center', md: 'left' }}
+              flex={1}
             >
               Hello world!
             </Heading>
+
             <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              tortor pretium viverra suspendisse. Tempus urna et pharetra
-              pharetra massa. Facilisi cras fermentum odio eu feugiat pretium
-              nibh ipsum consequat.
+              I'm <Reference>Tim</Reference> and welcome to my site.
             </Text>
-          </Box>
+          </Flex>
         </Flex>
         <Divider my="2rem" backgroundColor="gray" width="100%" />
         <Flex
@@ -48,7 +59,7 @@ export default function Home(props: IHomeProps) {
           padding="1.5rem"
           borderRadius="1rem"
         >
-          <Heading as="h2" size="md">
+          <Heading as="h2" size="md" mb={2}>
             Things I'm up to
           </Heading>
           <Flex
@@ -59,36 +70,40 @@ export default function Home(props: IHomeProps) {
           >
             <Box flex={1} mt={'1rem'}>
               <Heading size="sm" as="h3">
-                Living
+                Living...
               </Heading>
               <Text fontSize="sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                sit amet turpis vel turpis mattis efficitur. Morbi euismod ante
-                leo.
+                In the heartlands of the{' '}
+                <Reference link={homeInfo}>Washington DC Suburbs</Reference>{' '}
+                with my wife and dog.
               </Text>
             </Box>
             <Divider orientation="vertical" />
 
-            <Box flex={1} mt={'1rem'}>
+            <Box flex={1} mt={2}>
               <Heading size="sm" as="h3">
-                Working
+                Working...
               </Heading>
               <Text fontSize="sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                sit amet turpis vel turpis mattis efficitur. Morbi euismod ante
-                leo.
+                At the global consultancy,
+                <Reference
+                  link={{ href: 'https://www.pwc.com', external: true }}
+                >
+                  {' '}
+                  PricewaterhouseCoopers{' '}
+                </Reference>
+                as a technologist building products and tools.
               </Text>
             </Box>
             <Divider orientation="vertical" />
 
-            <Box flex={1} mt={'1rem'}>
+            <Box flex={1} mt={2}>
               <Heading size="sm" as="h3">
-                Doing
+                Doing...
               </Heading>
               <Text fontSize="sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                sit amet turpis vel turpis mattis efficitur. Morbi euismod ante
-                leo.
+                A bunch of new things centered around well-being, learning, and{' '}
+                <Reference link={{ href: '/blog' }}>creating things</Reference>.
               </Text>
             </Box>
           </Flex>
@@ -99,12 +114,11 @@ export default function Home(props: IHomeProps) {
         <Divider my="2rem" backgroundColor="gray" width="100%" />
         <Flex flexDirection="column" alignItems="center">
           <Heading as="h2" size="md" mb={4}>
-            Contact me?
+            Interested in learning more?
           </Heading>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu
-            tincidunt tortor aliquam nulla facilisi cras.
+            I'm flattered. Find more information at my{' '}
+            <Reference link={{ href: '/contact' }}>Contact</Reference> page
           </Text>
         </Flex>
       </Flex>
