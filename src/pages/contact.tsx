@@ -22,6 +22,11 @@ export default function Contact(props: IContactProps) {
       linkName: 'LinkedIn',
       src: 'https://www.linkedin.com/in/tim-won-5b9ba911/',
     },
+    {
+      title: 'Development Activity',
+      linkName: 'Github',
+      src: 'https://github.com/Tkwon123',
+    },
   ];
 
   function ContactItem(props) {
@@ -65,7 +70,12 @@ export default function Contact(props: IContactProps) {
                   >
                     {' '}
                   </ContactItem>
-                  <Divider mx="4rem" orientation="vertical" />
+                  <Divider
+                    mx="2rem"
+                    orientation="vertical"
+                    borderColor={{ xs: '#E2E8F0 !important' }}
+                    display={{ xs: 'none', base: 'inherit' }}
+                  />
                 </>
               );
             }
