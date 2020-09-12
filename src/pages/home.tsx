@@ -45,9 +45,9 @@ export default function Home(props: IHomeProps) {
               Hello world!
             </Heading>
 
-            <Text>
+            <Box>
               I'm <Reference>Tim</Reference> and welcome to my site.
-            </Text>
+            </Box>
           </Flex>
         </Flex>
         <Divider my="2rem" backgroundColor="gray" width="100%" />
@@ -103,7 +103,12 @@ export default function Home(props: IHomeProps) {
               </Heading>
               <Text fontSize="sm">
                 A bunch of new things centered around well-being, learning, and{' '}
-                <Reference link={{ href: '/blog' }}>creating things</Reference>.
+                <Reference
+                  link={{ href: '/blog', query: { tags: 'projects' } }}
+                >
+                  creating things
+                </Reference>
+                .
               </Text>
             </Box>
           </Flex>
