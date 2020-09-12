@@ -1,12 +1,20 @@
 import * as React from 'react';
-import { Box, Heading, Badge, List, ListItem, Link } from '@chakra-ui/core';
+import {
+  Box,
+  Heading,
+  Badge,
+  List,
+  ListItem,
+  Link,
+  Flex,
+} from '@chakra-ui/core';
 import { IPost } from '../lib/posts';
 
 export interface ITagListProps {
   tagRemoveHandler;
   tagClickHandler;
   posts: IPost[];
-  view: string;
+  view: string | string[];
   uniqueTagCount: { [key: string]: number };
 }
 
@@ -20,14 +28,24 @@ export default function TagList({
   return (
     <Box minW="10rem" display={{ xs: 'none', sm: 'block' }}>
       <Heading mb="2rem">Tags</Heading>
-      <Box mb="2rem">
-        <Heading fontSize="xs">Currently Viewing:</Heading>
+      <Box minH="3rem">
         {view ? (
-          <Badge cursor="pointer" onClick={() => tagRemoveHandler(view)}>
-            {view}
-          </Badge>
+          <>
+            <Heading fontSize="xs" display="inline">
+              {' '}
+              Viewing:{' '}
+            </Heading>
+            <Badge
+              alignSelf="center"
+              color="blue.500"
+              cursor="pointer"
+              onClick={() => tagRemoveHandler(view)}
+            >
+              {view}
+            </Badge>
+          </>
         ) : (
-          <></>
+          <Heading fontSize="xs">Viewing all posts</Heading>
         )}
       </Box>
 
