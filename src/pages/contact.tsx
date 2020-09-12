@@ -46,23 +46,26 @@ export default function Contact(props: IContactProps) {
   return (
     <Layout>
       <Flex flexDirection="column">
-        <Heading>Want to get in touch?</Heading>
+        <Heading>Contact Info</Heading>
         <Flex mt={'2rem'} flexWrap="wrap">
           {contactItems.map((item, index) => {
             if (index + 1 === contactItems.length) {
               // last one
               return (
-                <ContactItem
-                  title={item.title}
-                  src={item.src}
-                  linkName={item.linkName}
-                >
-                  {' '}
-                </ContactItem>
+                <Box>
+                  <ContactItem
+                    key={item.title}
+                    title={item.title}
+                    src={item.src}
+                    linkName={item.linkName}
+                  >
+                    {' '}
+                  </ContactItem>
+                </Box>
               );
             } else {
               return (
-                <>
+                <Box key={item.title} mr="2rem">
                   <ContactItem
                     title={item.title}
                     src={item.src}
@@ -71,12 +74,11 @@ export default function Contact(props: IContactProps) {
                     {' '}
                   </ContactItem>
                   <Divider
-                    mx="2rem"
                     orientation="vertical"
                     borderColor={{ xs: '#E2E8F0 !important' }}
                     display={{ xs: 'none', base: 'inherit' }}
                   />
-                </>
+                </Box>
               );
             }
           })}
