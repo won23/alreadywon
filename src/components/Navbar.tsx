@@ -12,8 +12,8 @@ import {
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
-import { useState, MouseEvent } from 'react';
-import { GiHamburgerMenu, GiRayGun } from 'react-icons/Gi';
+import { useState } from 'react';
+import { GiHamburgerMenu } from 'react-icons/gi';
 export interface INavItemProps {
   href: string;
   children?;
