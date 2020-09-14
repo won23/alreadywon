@@ -16,6 +16,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin-bottom: 1rem !important;
+}
+
 a:hover {
   text-decoration: underline;
 }

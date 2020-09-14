@@ -30,12 +30,12 @@ export default function Post({ postData }) {
       </Head>
       <Box as="article" mb="1rem">
         <Heading as="h1">{postData.title}</Heading>
-        <Date dateString={postData.date} />
-        <Box dangerouslySetInnerHTML={{ __html: postData.contentHtml }}></Box>
+        <Box
+          mt="1rem"
+          dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+        ></Box>
       </Box>
-      <Reference link={{ href: '/blog' }}>
-        <a>← Back to blog</a>
-      </Reference>
+      <Reference link={{ href: '/blog' }}>← Back to blog</Reference>
     </Layout>
   );
 }
