@@ -23,7 +23,7 @@ export default function Home(props: IHomeProps) {
             <Image
               src="/images/profile.jpg"
               alt="me"
-              size={{ xs: '3xs', sm: '2xs' }}
+              boxSize={{ xs: '3xs', sm: '2xs' }}
               borderRadius="2rem"
               mx="auto"
             ></Image>
@@ -68,8 +68,8 @@ export default function Home(props: IHomeProps) {
             width="100%"
             flexWrap="wrap"
           >
-            <Box flex={1} mt={'1rem'}>
-              <Heading size="sm" as="h3">
+            <Box flex={1} mt={'1rem'} pr="1rem">
+              <Heading fontSize="sm" as="h3">
                 Living...
               </Heading>
               <Text fontSize="sm">
@@ -80,8 +80,8 @@ export default function Home(props: IHomeProps) {
             </Box>
             <Divider orientation="vertical" />
 
-            <Box flex={1} mt={2}>
-              <Heading size="sm" as="h3">
+            <Box flex={1} mt={2} pr="1rem">
+              <Heading fontSize="sm" as="h3">
                 Working...
               </Heading>
               <Text fontSize="sm">
@@ -98,7 +98,7 @@ export default function Home(props: IHomeProps) {
             <Divider orientation="vertical" />
 
             <Box flex={1} mt={2}>
-              <Heading size="sm" as="h3">
+              <Heading fontSize="sm" as="h3">
                 Doing...
               </Heading>
               <Text fontSize="sm">

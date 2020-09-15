@@ -1,5 +1,5 @@
-import Layout, { siteTitle } from '../components/Layout';
-import { getSortedPostsData, IPost, ISortedPostData } from '../lib/posts';
+import Layout, { siteTitle } from 'src/components/Layout';
+import { getSortedPostsData, IPost, ISortedPostData } from 'src/lib/posts';
 import NextLink from 'next/link';
 import {
   Box,
@@ -13,7 +13,7 @@ import {
   Badge,
 } from '@chakra-ui/core';
 import { useState, useEffect } from 'react';
-import TagList from '../components/TagList';
+import TagList from 'src/components/TagList';
 import { useRouter } from 'next/router';
 export async function getStaticProps(): Promise<{ props }> {
   const data = getSortedPostsData();

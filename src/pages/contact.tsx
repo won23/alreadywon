@@ -1,10 +1,11 @@
 import * as React from 'react';
-import Layout from '../components/Layout';
+import Layout from 'src/components/Layout';
 import {
   Box,
   Heading,
   Flex,
   Divider,
+  HStack,
   Link as ChakraLink,
 } from '@chakra-ui/core';
 
@@ -35,7 +36,7 @@ export default function Contact(props: IContactProps) {
         <Heading size="sm" as="h3">
           {props.title}
         </Heading>
-        <Divider width="10%" borderColor="black"></Divider>
+        <Divider width="10%" borderColor="black" my="1rem"></Divider>
         <ChakraLink href={props.src} isExternal>
           {props.linkName ? props.linkName : props.src}
         </ChakraLink>
@@ -47,7 +48,7 @@ export default function Contact(props: IContactProps) {
     <Layout>
       <Flex flexDirection="column">
         <Heading>Contact Info</Heading>
-        <Flex mt={'2rem'} flexWrap="wrap">
+        <HStack mt={'2rem'} flexWrap="wrap">
           {contactItems.map((item, index) => {
             if (index + 1 === contactItems.length) {
               // last one
@@ -82,7 +83,7 @@ export default function Contact(props: IContactProps) {
               );
             }
           })}
-        </Flex>
+        </HStack>
       </Flex>
     </Layout>
   );

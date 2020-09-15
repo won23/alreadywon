@@ -21,7 +21,9 @@ export interface ISortedPostData {
 
 export function getSortedPostsData(): ISortedPostData {
   // Get file names under /posts
-  const fileNames = fs.readdirSync(postsDirectory);
+  const fileNames = fs
+    .readdirSync(postsDirectory)
+    .filter((item) => (item === 'drafts' ? null : item)); // ignore any drafts
   let allTags = [];
   const allPostsData = fileNames.map(
     (fileName): IPost => {

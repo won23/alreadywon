@@ -1,7 +1,7 @@
 import { Button, Flex, Heading, Text } from '@chakra-ui/core';
 import Link from 'next/link';
 import * as React from 'react';
-import Layout from '../components/Layout';
+import Layout from 'src/components/Layout';
 import { useRouter } from 'next/router';
 
 export interface IHomeProps {}
