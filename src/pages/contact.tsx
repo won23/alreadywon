@@ -7,6 +7,7 @@ import {
   Divider,
   Link as ChakraLink,
 } from '@chakra-ui/core';
+import Reference from 'src/components/Reference';
 
 export interface IContactProps {}
 
@@ -36,9 +37,9 @@ export default function Contact(props: IContactProps) {
           {props.title}
         </Heading>
         <Divider width="10%" borderColor="black"></Divider>
-        <ChakraLink href={props.src} isExternal>
+        <Reference link={{ href: props.src, external: true }}>
           {props.linkName ? props.linkName : props.src}
-        </ChakraLink>
+        </Reference>
       </Flex>
     );
   }
