@@ -78,6 +78,10 @@ export default function Navbar(props: INavbarProps) {
       name: 'Contact',
       path: '/contact',
     },
+    {
+      name: 'Resume',
+      path: '/resume',
+    },
   ];
   const handleNavItemClicked = (href: string) => {
     setShow(!show);
