@@ -8,6 +8,10 @@ export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
   const router = useRouter();
 
+  const handleClick = () => {
+    router.push('/home');
+  };
+
   return (
     <Layout home>
       <Flex
@@ -28,12 +32,11 @@ export default function Home(props: IHomeProps) {
             A personal website dedicated to those who may already have
           </Text>
           <Button
-            as="a"
             variant="outline"
             mt="4rem"
             size="md"
             maxW="6rem"
-            href="/home"
+            onClick={handleClick}
           >
             Explore
           </Button>
