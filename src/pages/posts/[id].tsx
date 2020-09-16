@@ -1,10 +1,10 @@
-import Layout from 'src/components/Layout';
-import { getAllPostIds, getPostData } from 'src/lib/posts';
+import Layout from '../../components/Layout';
+import { getAllPostIds, getPostData } from '../../lib/posts';
 import Head from 'next/head';
 import NextLink from 'next/link';
-import Date from 'src/components/Date';
+import Date from '../../components/Date';
 import { Box, Link, Heading, Text } from '@chakra-ui/core';
-import Reference from 'src/components/Reference';
+import Reference from '../../components/Reference';
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
   return {

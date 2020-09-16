@@ -5,7 +5,9 @@ import {
   FlexProps,
   Text,
   Icon,
+  PseudoBox,
   Link,
+  PseudoBoxProps,
 } from '@chakra-ui/core';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -20,7 +22,7 @@ export interface INavItemProps {
 export interface INavbarProps {}
 
 const NavItem = (props: INavItemProps) => {
-  const navItemStyle = {
+  const navItemStyle: PseudoBoxProps = {
     px: '1rem',
     py: '1rem',
     width: '100%',
@@ -32,11 +34,11 @@ const NavItem = (props: INavItemProps) => {
   };
 
   return (
-    <Box
+    <PseudoBox
       {...navItemStyle}
       onClick={() => props.handleNavItemClicked(props.href)}
     >
-      <Box
+      <PseudoBox
         display="block"
         // fontWeight="semibold"
         _hover={{ fontWeight: 'semibold' }}
@@ -44,8 +46,8 @@ const NavItem = (props: INavItemProps) => {
         fontSize="xl"
       >
         {props.children}
-      </Box>
-    </Box>
+      </PseudoBox>
+    </PseudoBox>
   );
 };
 
@@ -53,7 +55,7 @@ export default function Navbar(props: INavbarProps) {
   const [show, setShow] = useState(false);
   const router = useRouter();
   const navFlexSetting: FlexProps = {
-    // as: 'nav',
+    as: 'nav',
     // px: '6rem',
     py: 4,
     width: '100%',
