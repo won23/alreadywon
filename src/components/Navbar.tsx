@@ -75,12 +75,12 @@ export default function Navbar(props: INavbarProps) {
       path: '/blog',
     },
     {
-      name: 'Contact',
-      path: '/contact',
-    },
-    {
       name: 'Resume',
       path: '/resume',
+    },
+    {
+      name: 'Contact',
+      path: '/contact',
     },
   ];
   const handleNavItemClicked = (href: string) => {

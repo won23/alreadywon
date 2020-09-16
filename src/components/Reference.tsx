@@ -22,6 +22,7 @@ export default function Reference({ children, link }: IReferenceProps) {
         fontWeight="semibold"
         color={color}
         textDecoration="underline"
+        isExternal={true}
       >
         {children}
       </Link>

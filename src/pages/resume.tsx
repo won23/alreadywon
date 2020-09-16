@@ -12,21 +12,15 @@ import {
 } from '@chakra-ui/core';
 
 export interface IResumeProps {}
-
+import resumeData from '../configs/resume-data';
+import Reference from 'src/components/Reference';
 function TechDetail(props: { title: string; children: any }) {
-  let title;
-  if (props.title) {
-    title = (
+  return (
+    <Box fontSize="xs" mb={2}>
       <Text fontWeight="600" display="inline">
         {props.title}
       </Text>
-    );
-  }
-  return (
-    <Box>
-      <Text fontSize="xs">
-        {title}: {props.children}
-      </Text>
+      : {props.children}
     </Box>
   );
 }
@@ -36,11 +30,10 @@ function SectionHeader(props: {
   subtitle?: string;
   children: any;
 }) {
-  const subtitle = props.subtitle ? <Text> {props.subtitle} </Text> : false;
-  console.log('sub', subtitle);
+  const subtitle = props.subtitle ? props.subtitle : false;
 
   return props.section ? (
-    <Box>
+    <Box mb="1rem">
       <Heading fontSize="md" fontWeight="700">
         {props.children}
       </Heading>
@@ -49,7 +42,7 @@ function SectionHeader(props: {
       </Text>{' '}
     </Box>
   ) : (
-    <Heading fontSize="sm" textAlign="center" fontWeight="700" mb="1rem">
+    <Heading mb="1rem" fontSize="sm" textAlign="center" fontWeight="700">
       {' '}
       {props.children}
     </Heading>
@@ -57,40 +50,6 @@ function SectionHeader(props: {
 }
 
 export default function Resume(props: IResumeProps) {
-  const roles = [
-    {
-      title: 'Solution Architect',
-      details: [
-        'Leads solution design, prototyping, and development of a series of internally incubated products alongside cross-functional teams (Product Managers, UI/UX Designers, Developers)',
-        'Supports design and implementation of the NV CI/CD development toolchain including tool selection, network and identity/access control policies, and initial application migration & configuration',
-      ],
-    },
-    {
-      title: 'Tech Lead',
-      details: [
-        'Leads agile lifecycle activities including management of sprints & kanban boards, leading agile ceremonies (i.e. sprint planning, scrum, etc.), and performing release management',
-        'Establishes standard operating procedures, documented product and team workflows, and other designed other solution architecture guiding principles defining application development strategy',
-        'Developed full-stack features across cloud/infrastructure, backend/messaging services, and front-end applications',
-      ],
-    },
-    {
-      title: 'Manager',
-      details: [
-        'Lead teams in average size ranging from 3-8 members, performs 1:1s, coaching, and other performance assessments',
-        'Drives day-to-day operations including performing staffing and training for junior team members, budgeting and annual administrative processes, and promoting teaming/collaboration with client-service teams and external analysts',
-        'Manages on-shore, off-shore, and contractor resources including conducting performance reviews; interviewing, hiring, and outreach; and partnering/collaboration with outside teams throughout the enterprise',
-      ],
-    },
-    {
-      title: 'Consultant',
-      details: [
-        'For a start-up financial regulatory agency, lead development of a data-processing pipeline of consumer complaint data, Re-designed a case review system utilizing Microsoft Access, SQL, and VBA to improve the data collection process, procedures to identify top-performing candidates, and improved feedback mechanisms for a team of 40+ employees',
-        'For a public-private start-up investment fund, managed regulatory compliance of a $22bn stimulus program by performing independent data forensics, surveillance, and risk services. Evaluated monthly fund-manager transactional data against SQL stored procedures to ensure adherence to program rules looking for patterns of behavior which may indicate “gaming” of the system',
-        'For a large market account team, lead an internal Project Management Office (PMO) to delivering a cohesive, externally facing view of $20mm+ account team over a dozen contracting vehicles',
-      ],
-    },
-  ];
-
   return (
     <Layout>
       <Flex flexDir="column" alignItems="space-between">
@@ -112,29 +71,36 @@ export default function Resume(props: IResumeProps) {
               </SectionHeader>
             </Box>
             <Box>
-              {roles.map((role) => {
+              {resumeData.roles.map((role, index) => {
                 return (
-                  <Box>
+                  <Box key={index}>
                     <Heading
                       as="h4"
                       fontSize="sm"
-                      fontWeight="normal"
+                      fontWeight="600"
                       fontStyle="italic"
+                      mb=".5rem"
                     >
                       {role.title}
-                      <List
-                        styleType="disc"
-                        mb="1rem"
-                        spacing={2}
-                        marginBottom="1rem"
-                      >
-                        {role.details.map((detail) => (
-                          <ListItem fontSize="xs" ml="1rem" fontStyle="normal">
-                            {detail}
-                          </ListItem>
-                        ))}
-                      </List>
                     </Heading>
+
+                    <List
+                      styleType="disc"
+                      mb="1rem"
+                      spacing={2}
+                      marginBottom="1rem"
+                    >
+                      {role.details.map((detail, index) => (
+                        <ListItem
+                          key={index}
+                          fontSize="xs"
+                          ml="1rem"
+                          fontStyle="normal"
+                        >
+                          {detail}
+                        </ListItem>
+                      ))}
+                    </List>
                   </Box>
                 );
               })}
@@ -142,30 +108,46 @@ export default function Resume(props: IResumeProps) {
           </Box>
           <Divider orientation="vertical"></Divider>
           <Box p="1rem" flex={1}>
-            <SectionHeader>Languages, Frameworks, Tools</SectionHeader>
-            <TechDetail title="Front-end">Angular, React [basic]</TechDetail>
-            <TechDetail title="Back-end">
-              NodeJS, SQL (postgreSQL), NoSQL (MongoDB, Firebase, neo4j)
-            </TechDetail>
-            <TechDetail title="Infrastructure">
-              Docker, Kubernetes, GCP, AWS, Ansible, Terraform, Jenkins,
-              Prometheus, Linux (Ubuntu/Debian)
-            </TechDetail>
-            <TechDetail title="Other domains">
-              Oauth/OpenID Connect, GraphQL
-            </TechDetail>
-            <TechDetail title="Workflow">
-              Jira, Pivotal Tracker, Slack, Github/Gitlab, Trello
-            </TechDetail>
+            <Box mb="1rem">
+              <SectionHeader>Languages, Frameworks, Tools</SectionHeader>
+              {resumeData.technologies.map((item, index) => {
+                return (
+                  <TechDetail key={index} title={item.title}>
+                    {item.details}
+                  </TechDetail>
+                );
+              })}
+            </Box>
 
             <SectionHeader>Certifications</SectionHeader>
-
-            <TechDetail title="Google Cloud Architect - Professional">
-              (ID: 60jR9f) Valid Aug. 2018 - 2020
-            </TechDetail>
-            <TechDetail title="AWS Certified Solutions Architect - Associate">
-              (ID: KN5HZKX2JJEE1FKE) Valid Dec. 2017 - 2020
-            </TechDetail>
+            <Box mb="1rem">
+              <TechDetail title="Google Cloud Architect - Professional">
+                <Reference
+                  link={{
+                    href:
+                      'https://www.credential.net/b92dc647-104b-437e-b3d8-b56edcbe06a0?key=04065633a5b19f20b629366f1052154edc186a985a02650bb50ea4d1e68e80af',
+                    external: true,
+                  }}
+                >
+                  ID: 60jR9f
+                </Reference>{' '}
+                <br />
+                Valid Aug. 2018 - 2022
+              </TechDetail>
+              <TechDetail title="AWS Certified Solutions Architect - Associate">
+                <Reference
+                  link={{
+                    href:
+                      'https://aw.certmetrics.com/amazon/public/verification.aspx',
+                    external: true,
+                  }}
+                >
+                  ID: KN5HZKX2JJEE1FKE
+                </Reference>
+                <br />
+                Valid Dec. 2017 - 2020
+              </TechDetail>
+            </Box>
             <SectionHeader>Education</SectionHeader>
 
             <TechDetail title="Bachelors of Science, Information Systems">
