@@ -3,8 +3,8 @@ import { theme } from '@chakra-ui/core';
 export default {
   ...theme,
   fonts: {
-    body: "'Alegreya Sans', sans-serif",
-    heading: "'Permanent Marker', cursive",
+    body: "'Raleway', sans-serif",
+    heading: "'Raleway', sans-serif",
     mono: 'Menlo, monospace',
   },
   // fontSizes: {

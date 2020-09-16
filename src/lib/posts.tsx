@@ -25,7 +25,7 @@ export function getSortedPostsData(): ISortedPostData {
     .readdirSync(postsDirectory)
     .filter((item) => (item === 'drafts' ? null : item)); // ignore any drafts
   let allTags = [];
-  console.log(fileNames);
+
   const allPostsData = fileNames.map(
     (fileName): IPost => {
       const id = fileName.replace(/\.md$/, '');
