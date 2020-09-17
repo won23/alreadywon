@@ -1,4 +1,4 @@
-import Layout, { siteTitle } from '../components/Layout';
+import Layout from '../components/Layout';
 import { getSortedPostsData, IPost, ISortedPostData } from '../lib/posts';
 import NextLink from 'next/link';
 import {

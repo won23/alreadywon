@@ -3,11 +3,11 @@ import {
   Flex,
   Heading,
   FlexProps,
-  Text,
-  Icon,
   PseudoBox,
-  Link,
   PseudoBoxProps,
+  useColorMode,
+  Button,
+  IconButton,
 } from '@chakra-ui/core';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -18,6 +18,7 @@ export interface INavItemProps {
   href: string;
   children?;
   handleNavItemClicked?: Function;
+  handleColormodeClicked?: Function;
 }
 export interface INavbarProps {}
 
@@ -56,7 +57,6 @@ export default function Navbar(props: INavbarProps) {
   const router = useRouter();
   const navFlexSetting: FlexProps = {
     as: 'nav',
-    // px: '6rem',
     py: 4,
     width: '100%',
     justifyContent: 'space-between',
@@ -64,7 +64,7 @@ export default function Navbar(props: INavbarProps) {
     borderBottom: '1px',
     borderColor: 'gray.500',
   };
-
+  const { colorMode, toggleColorMode } = useColorMode();
   const navItems: { name: string; path: string }[] = [
     {
       name: 'Home',
@@ -126,6 +126,21 @@ export default function Navbar(props: INavbarProps) {
                 {navItem.name}
               </NavItem>
             ))}
+            {colorMode === 'light' ? (
+              <IconButton
+                aria-label="Night mode"
+                icon="moon"
+                onClick={toggleColorMode}
+                variant="ghost"
+              ></IconButton>
+            ) : (
+              <IconButton
+                variant="ghost"
+                aria-label="Light mode"
+                icon="sun"
+                onClick={toggleColorMode}
+              ></IconButton>
+            )}
           </Box>
         </Flex>
       </Flex>

@@ -7,6 +7,18 @@ export default {
     heading: "'Raleway', sans-serif",
     mono: 'Menlo, monospace',
   },
+  mode: {
+    light: {
+      background: 'white',
+      color: '#1A202C',
+      panelBackground: 'gray.200',
+    },
+    dark: {
+      background: 'gray.800',
+      panelBackground: 'gray.700',
+      color: 'white',
+    },
+  },
   // fontSizes: {
   //   xs: "12px",
   //   sm: "14px",

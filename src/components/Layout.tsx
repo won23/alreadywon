@@ -1,14 +1,16 @@
-import { Box, Flex, FlexProps } from '@chakra-ui/core';
+import { Box, Flex, FlexProps, useColorMode } from '@chakra-ui/core';
 import Head from 'next/head';
 import Navbar from './Navbar';
+import customTheme from 'src/styles/theme';
 
 export interface ILayoutProps {
   home?: boolean;
+  title?: string;
   children?: any;
 }
 
-export const siteTitle = "Tim Won's Website";
 export default function Layout(props: ILayoutProps) {
+  const siteTitle = `Tim Won | Tech, Management, and Life`;
   const navFlexSetting: FlexProps = {
     width: '100%',
     flexDirection: 'column',
@@ -19,11 +21,28 @@ export default function Layout(props: ILayoutProps) {
     margin: '2rem auto 6rem',
     px: '2rem',
   };
+
+  const { colorMode } = useColorMode();
+
   return (
-    <Box w="100%">
+    <Box
+      w="100%"
+      minH="100%"
+      bg={customTheme.mode[colorMode].background}
+      color={customTheme.mode[colorMode].color}
+    >
       <Head>
+        <title>{siteTitle}</title>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="A personal site about me" />
+        <meta name="title" content={siteTitle} />
+        <meta
+          name="description"
+          content="A personal website of Tim Won about Technology, Management, and Life"
+        />
+        <meta
+          name="keywords"
+          content="Tim, Won, Tim Won, PwC, Development, Technology"
+        />
         <meta
           property="og:image"
           content={`https://og-image.now.sh/${encodeURI(

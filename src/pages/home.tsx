@@ -1,9 +1,20 @@
 import * as React from 'react';
-import { Box, Heading, Flex, Image, Text, Divider } from '@chakra-ui/core';
+import {
+  Box,
+  Heading,
+  Flex,
+  Image,
+  Text,
+  Divider,
+  useColorMode,
+} from '@chakra-ui/core';
 import Layout from '../components/Layout';
 import Reference, { ILink } from '../components/Reference';
+import customTheme from 'src/styles/theme';
 export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
+  const { colorMode } = useColorMode();
+
   const homeInfo: ILink = {
     href:
       'https://www.google.com/maps/place/North+Bethesda,+MD/@39.0430774,-77.1551229,13z/data=!3m1!4b1!4m5!3m4!1s0x89b7cc3bfabff901:0x50407ec368483348!8m2!3d39.0445535!4d-77.1188678',
@@ -55,7 +66,7 @@ export default function Home(props: IHomeProps) {
           flexDirection="column"
           alignItems="center"
           width="100%"
-          bg="gray.200"
+          bg={customTheme.mode[colorMode].panelBackground}
           padding="1.5rem"
           borderRadius="1rem"
         >
