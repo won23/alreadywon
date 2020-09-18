@@ -1,0 +1,32 @@
+---
+title: 'My first React Project'
+description: 'Observations and Learnings from an Angular World'
+date: '2020-09-19'
+tags:
+  - projects
+  - angular
+  - react
+---
+
+I build this website primarily to learn React, but found myself rather immersed in the ecosystem rather than the library itself. I've skirted around much of React features, but was able to become familiar with the following tools:
+
+**Core libraries**: React, ChakraUI, and NextJS
+**Hosting**: Firebase Hosting + Functions, Github Actions (CI/CD)
+
+Coming from the Angular world, I've noticed several stark (and pleasant) changes. The nice thing always found about Angular is that it comes pre-bundled with all the technologies (typescript, protractor, webpack, etc.) and abstractions (services, guards, pipes) you need; however, the convenience of this bundling is quickly outweighed in large applications when you realize that Angular provides these tools, but doesnt prescribe consistent ways on how to use these tools.
+
+This became quickly evident to me when joining a large Angular project wherein tracing logic was a pain (i.e. what was storing state? where was logic being handled?). Component composition was also incredibly difficult as while components could be re-used, their interfaces
+
+After learning React (16), several things became really evident:
+
+1. Flexibility of components - In React, components are small and insignificant; you can create them on the fly. Even more so, the ability in React to compose parent and child components-- and reverse them using `child` props is incredible! In Angular, components _feel_ significant-- you create them, inject them in modules, silo them in folders. React components remove significant boilerplate and barriers to clear organization.
+2. Developer ergonomics - Modifying a single file for _all_ component logic is intuitive, fast, and liberating. When working in Angular, it would be common to open ~3 horizontal panels just to trace logic (i.e. HTML, CSS, and .ts for the service). Within a React component, it is clear where data comes from, how to use it, and how to send it back up the component tree.
+3. Forced rules/patterns - Especially with the introduction of React hooks, clear patterns emerge for how/when to pass data, store state, and compose the component hierarchy. A naive me would once claim this as constricting, but just as my fondness of Typescript has grown, so too has my fondness for established patterns. No longer was I debating which "guard" to use or whether logic belongs as a pipe or within a service. React has solved all these questions through established patterns.
+
+Other things I learned outside of React:
+
+- Documentation is _far better_ than Angular. Reading the Angular documents feels like getting bludgeoned with Websters dictionary. React, covering a far smaller surface area and allowing partner libraries to also do the same, is simple, easy to navigate, and intuitive.
+- NextJS makes building hybrid server-side applications a breeze. The ability to pre-render and hydrate components is a huge benefit, especially coming from a static-generated world where I'm accustomed to doing menial activities on the browser like fetching dropdown values. The ability to integrate tooling like Typescript/SASS makes it a no-brainer
+- CharkaUI is awesome - it is still a pre 1.0 but seems very promising. Chakra is built on the (styled components)[https://styled-components.com/] wherein CSS attributes are passed directly to components with Javascript. Type-checking makes building UI extremely convenient for a novice like me. Also, building a responsive website with theming has never been easier!
+
+Completing this React project has made me a bit sour on Angular. Granted, I'm confident an individual or competent and coordinated team could execute a great Angular project-- I don't think there is any issue with the framework itself-- but I'm increasingly asking myself _why_. My affinity for tools like modules, RxJS, and builders just make me realize that Angular's tools may just be a bit _too_ powerful, giving unnecessary choices and decisions where none should be needed. React has me yearning for the simple life with thoughtful, well-crafted patterns-- something I can understand whether I write it or not.
