@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Text } from '@chakra-ui/core';
+import { Box, Button, Flex, Heading, Text } from '@chakra-ui/core';
 import Link from 'next/link';
 import * as React from 'react';
 import Layout from '../layouts';
@@ -13,7 +13,17 @@ export default function Home(props: IHomeProps) {
   };
 
   return (
-    <Layout>
+    <Box
+      backgroundImage={{
+        xs: "url('/images/background_mobile.jpg')",
+        md: "url('/images/background.jpeg')",
+      }}
+      backgroundPosition={{ xs: 'top', md: 'center' }}
+      backgroundRepeat="no-repeat"
+      height="100vh"
+      width="100%"
+      backgroundSize={{ xs: '300% auto', md: '100% auto' }}
+    >
       <Flex
         justifyContent="center"
         alignContent="center"
@@ -42,6 +52,6 @@ export default function Home(props: IHomeProps) {
           </Button>
         </Flex>
       </Flex>
-    </Layout>
+    </Box>
   );
 }

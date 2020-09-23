@@ -4,7 +4,6 @@ import Navbar from '../components/Navbar';
 import customTheme from 'src/styles/theme';
 
 export interface ILayoutProps {
-  home?: boolean;
   title?: string;
   children?: any;
 }
@@ -52,28 +51,13 @@ export default function Layout(props: ILayoutProps) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      {props.home ? (
-        <Box
-          backgroundImage={{
-            xs: "url('/images/background_mobile.jpg')",
-            md: "url('/images/background.jpeg')",
-          }}
-          backgroundPosition={{ xs: 'top', md: 'center' }}
-          backgroundRepeat="no-repeat"
-          height="100vh"
-          width="100%"
-          backgroundSize={{ xs: '300% auto', md: '100% auto' }}
-        >
+
+      <Box>
+        <Navbar></Navbar>
+        <Flex {...navFlexSetting}>
           <main> {props.children}</main>
-        </Box>
-      ) : (
-        <Box>
-          <Navbar></Navbar>
-          <Flex {...navFlexSetting}>
-            <main> {props.children}</main>
-          </Flex>
-        </Box>
-      )}
+        </Flex>
+      </Box>
     </Box>
   );
 }
