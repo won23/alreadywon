@@ -8,7 +8,7 @@ import {
   Divider,
   useColorMode,
 } from '@chakra-ui/core';
-import Layout from '../components/Layout';
+import Layout from '../layouts';
 import Reference, { ILink } from '../components/Reference';
 import customTheme from 'src/styles/theme';
 export interface IHomeProps {}

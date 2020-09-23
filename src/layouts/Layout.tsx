@@ -1,6 +1,6 @@
 import { Box, Flex, FlexProps, useColorMode } from '@chakra-ui/core';
 import Head from 'next/head';
-import Navbar from './Navbar';
+import Navbar from '../components/Navbar';
 import customTheme from 'src/styles/theme';
 
 export interface ILayoutProps {

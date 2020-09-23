@@ -5,7 +5,7 @@ import remark from 'remark';
 import html from 'remark-html';
 import { countBy } from 'lodash';
 
-const postsDirectory = path.join(process.cwd(), 'src/posts');
+const postsDirectory = path.join(process.cwd(), 'src/pages/posts');
 export interface IPost {
   id?: string;
   description?: string;
@@ -28,7 +28,7 @@ export function getSortedPostsData(): ISortedPostData {
 
   const allPostsData = fileNames.map(
     (fileName): IPost => {
-      const id = fileName.replace(/\.md$/, '');
+      const id = fileName.replace(/\.mdx$/, '');
 
       // Read markdown file as string
       const fullPath = path.join(postsDirectory, fileName);
