@@ -6,12 +6,16 @@ import {
   Flex,
   Divider,
   Link as ChakraLink,
+  useColorMode,
 } from '@chakra-ui/core';
 import Reference from 'src/components/Reference';
+import customTheme from 'src/styles/theme';
 
 export interface IContactProps {}
 
 export default function Contact(props: IContactProps) {
+  const { colorMode } = useColorMode();
+
   const contactItems = [
     {
       title: 'Email',
@@ -36,7 +40,10 @@ export default function Contact(props: IContactProps) {
         <Heading size="sm" as="h3">
           {props.title}
         </Heading>
-        <Divider width="10%" borderColor="black"></Divider>
+        <Divider
+          width="10%"
+          borderColor={customTheme.mode[colorMode].color}
+        ></Divider>
         <Reference link={{ href: props.src, external: true }}>
           {props.linkName ? props.linkName : props.src}
         </Reference>
