@@ -1,0 +1,88 @@
+---
+title: 'Upgrading to MDX'
+description: 'Markdown as a scalable method for content delivery'
+date: '2020-09-23'
+tags:
+  - projects
+  - react
+  - markdown
+---
+
+# Background
+
+I became interested in the idea of [markdown](https://en.wikipedia.org/wiki/Markdown) as a scalable method for content creation/delivery while [building this website](http://localhost:3000/posts/my-first-react-project). Following the [NextJS introduction tutorial](https://nextjs.org/learn/basics/create-nextjs-app), a blog could be created by using NextJS and a series of [remark](https://github.com/remarkjs/remark/blob/main/doc/plugins.md) to pre-process `.md` files intl HTML, and then setting the `innerHTML` element on a post page.
+
+While an interesting start, I noticed several shortcomings including:
+
+- The initial rendering of the markdown -> HTML didn't display quite to my satisfaction (i.e. the spacing/margins didn't display like a modern webpage)
+- I couldn't modify or extend any of the native functionality which meant I was basically stuck with plain text
+- Inherent security shortcomings with the usage of setting an `innerHTML` (which React aptly labels `dangerouslySetInnerHtml`)
+
+### Defining My Requirements
+
+I came up with a list of basic requirements in order to use markdown for delivering content:
+
+1. Pre-rendering (i.e. serverside) markdown files to HTML
+2. Ability to modify the HTML elements that created to fix any style formatting
+3. Have flexibility to add rich content like media (images/video, code blocks, emojis, etc.) to generate more interesting content
+
+## End Result
+
+I'm pretty satisfied with the result as the mdx ecosystem was really able to meet all of my core requirements. I'll continue iterating on the design as time evolves, but here are the results of my initial set of requirements.
+
+### Requirement #1: Pre-rendering
+
+Everything on this page has been written in .mdx! Even the markdown headers correctly link to clickable content.
+
+### Requirement #2: Styling
+
+I can modify HTML elements by replacing them with React ([Chakra](https://chakra-ui.com/)) Components
+
+```jsx
+// MdxComponents.tsx (representative components)
+
+export default MDXComponents = {
+  h1: (props) => <Heading as="h1" size="xl" {...props} />,
+  h2: (props) => <Heading as="h2" size="lg" {...props} />,
+  h3: (props) => <Heading as="h3" size="md" {...props} />,
+  // {...}
+};
+```
+
+I can even render Chakra components within my markdown. The following markdown (in JSX)...
+
+```jsx
+<Flex justifyContent="center">
+  <Box bg="green.900" w="100px" h="100px"></Box>
+  <Box bg="blue.900" w="100px" h="100px"></Box>
+  <Box bg="red.900" w="100px" h="100px"></Box>
+</Flex>
+```
+
+...will render the following HTML:
+
+<Flex justifyContent="center">
+  <Box bg="green.900" w="100px" h="100px"></Box>
+  <Box bg="blue.900" w="100px" h="100px"></Box>
+  <Box bg="red.900" w="100px" h="100px"></Box>
+</Flex>
+
+Pretty cool!
+
+### Requirement #3: Rich Media
+
+Rendering emojis in markdown is a breeze:
+
+:joy: `:joy`
+:whale: `:whale`
+:see_no_evil: `:see_no_evil`
+
+And because HTML elements are mapped to JSX, we can enact interesting behaviors. Not only can we render a linked image with an `<img>` tag, but we can actually replace it with a React component that zooms! Try clicking on the image below.
+
+https://upload.wikimedia.org/wikipedia/commons/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg
+
+The zoom effect is just a component that takes the `img` properties as props, and renders the image. Nice.
+
+## Lessons Learned
+
+Implementing this feature surprisingly took me a few days as the more I learned, the more I wanted to do, and moreover, the ecosystem is a bit complex. I'll have a future update that discusses these lessons.
