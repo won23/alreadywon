@@ -12,11 +12,13 @@ export default {
       background: 'white',
       color: '#1A202C',
       panelBackground: 'gray.200',
+      codeBackground: '#1A202C',
     },
     dark: {
       background: 'gray.800',
       panelBackground: 'gray.700',
       color: 'white',
+      codeBackground: '#2D3748',
     },
   },
   // fontSizes: {

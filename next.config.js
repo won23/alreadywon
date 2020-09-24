@@ -1,4 +1,5 @@
 const withMdxEnhanced = require('next-mdx-enhanced');
+
 const nextConfig = {
   distDir: 'nextjs',
   env: {
@@ -16,9 +17,7 @@ module.exports = withMdxEnhanced({
   rehypePlugins: [],
   usesSrc: true,
   extendFrontMatter: {
-    process: (mdxContent, frontMatter) => {
-      console.log('frontMatter', frontMatter);
-    },
+    process: (mdxContent, frontMatter) => {},
     phase: 'prebuild|loader|both',
   },
   reExportDataFetching: false,
