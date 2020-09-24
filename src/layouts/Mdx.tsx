@@ -3,7 +3,7 @@ import { MDXProvider } from '@mdx-js/react';
 import MDXComponents from 'src/components/MdxComponents';
 import Layout from './Layout';
 import { Heading } from '@chakra-ui/core';
-import { even, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export interface IMdxProps {
