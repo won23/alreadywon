@@ -73,10 +73,7 @@ export default function Blog({ data }: IProps) {
                     <Link>{title}</Link>
                   </NextLink>
                 </Heading>
-                <Text fontSize="sm" color="gray.600">
-                  {' '}
-                  {description}
-                </Text>
+                <Text fontSize="sm"> {description}</Text>
               </Box>
             );
           })}
