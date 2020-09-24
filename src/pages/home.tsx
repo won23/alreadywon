@@ -36,6 +36,8 @@ export default function Home(props: IHomeProps) {
               alt="me"
               size={{ xs: '3xs', sm: '2xs' }}
               borderRadius="2rem"
+              borderColor="gray.500"
+              borderWidth={2}
               mx="auto"
             ></Image>
           </Box>

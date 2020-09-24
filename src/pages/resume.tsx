@@ -79,8 +79,11 @@ export default function Resume(props: IResumeProps) {
             maxW="200px"
             minW="150px"
             rounded="full"
+            borderColor="gray.500"
+            borderWidth={2}
             src="images/resume.jpg"
             alt="headshot"
+            shadow={2}
             objectFit="cover"
             mb="1rem"
           ></Image>
