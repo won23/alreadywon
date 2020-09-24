@@ -1,5 +1,7 @@
 import { ThemeProvider, CSSReset, ColorModeProvider } from '@chakra-ui/core';
+import 'react-medium-image-zoom/dist/styles.css';
 import '../styles/global.css';
+
 import customTheme from '../styles/theme';
 import Router from 'next/router';
 import * as gtag from 'src/lib/gtag'; //https://hoangtrinhj.com/using-google-analytics-with-next-js

@@ -15,7 +15,7 @@ export default {
       codeBackground: '#1A202C',
     },
     dark: {
-      background: 'gray.800',
+      background: '#1A202C', //gray 800
       panelBackground: 'gray.700',
       color: 'white',
       codeBackground: '#2D3748',
