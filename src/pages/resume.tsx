@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Layout from 'src/layouts';
 import {
-  Grid,
   Box,
   Flex,
   Heading,
@@ -9,6 +8,7 @@ import {
   Text,
   ListItem,
   List,
+  Image,
 } from '@chakra-ui/core';
 
 export interface IResumeProps {}
@@ -54,59 +54,92 @@ export default function Resume(props: IResumeProps) {
     <Layout>
       <Flex flexDir="column" alignItems="space-between">
         <Heading mb="1rem">Resume</Heading>
+        <Flex
+          justifyContent={{ xs: 'center', sm: 'space-between' }}
+          alignItems="center"
+          flexWrap="wrap"
+        >
+          <Box maxW="md" order={{ xs: 2, sm: 1 }}>
+            <Text>
+              I'm a diversified <strong>technologist</strong> and{' '}
+              <strong>management consultant</strong> with over nine years of
+              professional experience maintaining a professional focus on
+              designing software, leading product development, and cultivating
+              high-performing teams.
+            </Text>
+            <Text>
+              I'm a versatile leader and team-player, having held a variety of
+              different roles in management as well as individual contribution.
+              Below I've listed selected accomplishments throughout my career.
+            </Text>
+          </Box>
 
-        <Text>
-          I'm a diversified technologist and management consultant with over
-          nine years of professional experience maintaining a professional focus
-          on designing software, leading product development, and cultivating
-          high-performing teams.
-        </Text>
+          <Image
+            order={{ xs: 1, sm: 2 }}
+            maxW="200px"
+            minW="150px"
+            rounded="full"
+            src="images/resume.jpg"
+            alt="headshot"
+            objectFit="cover"
+            mb="1rem"
+          ></Image>
+        </Flex>
+
         <Divider mt="1rem"></Divider>
         <Flex flexDir={{ xs: 'column', sm: 'row' }}>
-          <Box flex={2} p="1rem">
-            <Box>
-              <SectionHeader section="primary" subtitle="August 2011 - Present">
-                {' '}
-                PricewaterhouseCoopers LLP, Senior Manager
-              </SectionHeader>
-            </Box>
-            <Box>
-              {resumeData.roles.map((role, index) => {
-                return (
-                  <Box key={index}>
-                    <Heading
-                      as="h4"
-                      fontSize="sm"
-                      fontWeight="600"
-                      fontStyle="italic"
-                      mb=".5rem"
+          <Box flex={2} p={{ xs: '0', sm: '1rem' }}>
+            {resumeData.employers.map((employer, index) => {
+              return (
+                <Box>
+                  <Box>
+                    <SectionHeader
+                      section="primary"
+                      subtitle="August 2011 - Present"
                     >
-                      {role.title}
-                    </Heading>
-
-                    <List
-                      styleType="disc"
-                      mb="1rem"
-                      spacing={2}
-                      marginBottom="1rem"
-                    >
-                      {role.details.map((detail, index) => (
-                        <ListItem
-                          key={index}
-                          fontSize="xs"
-                          ml="1rem"
-                          fontStyle="normal"
-                        >
-                          {detail}
-                        </ListItem>
-                      ))}
-                    </List>
+                      {employer.orgName}, {employer.title}
+                    </SectionHeader>
                   </Box>
-                );
-              })}
-            </Box>
+                  {employer.roles.map((role, index) => {
+                    return (
+                      <Box key={index}>
+                        <Heading
+                          as="h4"
+                          fontSize="sm"
+                          fontWeight="600"
+                          fontStyle="italic"
+                          mb=".5rem"
+                        >
+                          {role.title}
+                        </Heading>
+
+                        <List
+                          styleType="disc"
+                          mb="1rem"
+                          spacing={2}
+                          marginBottom="1rem"
+                        >
+                          {role.details.map((detail, index) => (
+                            <ListItem
+                              key={index}
+                              fontSize="xs"
+                              ml="1rem"
+                              fontStyle="normal"
+                            >
+                              {detail}
+                            </ListItem>
+                          ))}
+                        </List>
+                      </Box>
+                    );
+                  })}
+                </Box>
+              );
+            })}
           </Box>
           <Divider orientation="vertical"></Divider>
+          <Box></Box>
+
           <Box p="1rem" flex={1}>
             <Box mb="1rem">
               <SectionHeader>Languages, Frameworks, Tools</SectionHeader>
@@ -120,39 +153,32 @@ export default function Resume(props: IResumeProps) {
             </Box>
 
             <SectionHeader>Certifications</SectionHeader>
-            <Box mb="1rem">
-              <TechDetail title="Google Cloud Architect - Professional">
-                <Reference
-                  link={{
-                    href:
-                      'https://www.credential.net/b92dc647-104b-437e-b3d8-b56edcbe06a0?key=04065633a5b19f20b629366f1052154edc186a985a02650bb50ea4d1e68e80af',
-                    external: true,
-                  }}
-                >
-                  ID: 60jR9f
-                </Reference>{' '}
-                <br />
-                Valid Aug. 2018 - 2022
-              </TechDetail>
-              <TechDetail title="AWS Certified Solutions Architect - Associate">
-                <Reference
-                  link={{
-                    href:
-                      'https://aw.certmetrics.com/amazon/public/verification.aspx',
-                    external: true,
-                  }}
-                >
-                  ID: KN5HZKX2JJEE1FKE
-                </Reference>
-                <br />
-                Valid Dec. 2017 - 2020
-              </TechDetail>
-            </Box>
-            <SectionHeader>Education</SectionHeader>
+            {resumeData.certifications.map((certification) => {
+              return (
+                <Box mb="1rem" key={certification.id}>
+                  <TechDetail title={certification.name}>
+                    <Reference
+                      link={{
+                        href:
+                          'https://www.credential.net/b92dc647-104b-437e-b3d8-b56edcbe06a0?key=04065633a5b19f20b629366f1052154edc186a985a02650bb50ea4d1e68e80af',
+                        external: true,
+                      }}
+                    >
+                      {certification.id}
+                    </Reference>{' '}
+                    <br />
+                    {certification.validDates}
+                  </TechDetail>
+                </Box>
+              );
+            })}
 
-            <TechDetail title="Bachelors of Science, Information Systems">
-              Robert H. School of Business: University of Maryland: College Park
-            </TechDetail>
+            <SectionHeader>Education</SectionHeader>
+            {resumeData.education.map((item) => {
+              return (
+                <TechDetail title={item.degree}>{item.orgName}</TechDetail>
+              );
+            })}
           </Box>
         </Flex>
       </Flex>
