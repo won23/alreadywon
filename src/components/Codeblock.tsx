@@ -26,6 +26,7 @@ function CodeBlock(props) {
           style={{
             ...style,
             ...{
+              whiteSpace: 'pre-wrap',
               padding: '1rem',
               marginTop: '2rem',
               marginBottom: '2rem',
