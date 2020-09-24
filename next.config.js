@@ -1,4 +1,9 @@
 const withMdxEnhanced = require('next-mdx-enhanced');
+var link = require('rehype-autolink-headings');
+var slug = require('rehype-slug');
+const linkOptions = {
+  behavior: 'wrap',
+};
 
 const nextConfig = {
   distDir: 'nextjs',
@@ -14,7 +19,7 @@ module.exports = withMdxEnhanced({
   defaultLayout: true,
   fileExtensions: ['mdx'],
   remarkPlugins: [],
-  rehypePlugins: [],
+  rehypePlugins: [slug, [link, linkOptions]],
   usesSrc: true,
   extendFrontMatter: {
     process: (mdxContent, frontMatter) => {},
