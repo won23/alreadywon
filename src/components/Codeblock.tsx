@@ -28,6 +28,7 @@ function CodeBlock(props) {
             ...{
               padding: '1rem',
               marginTop: '2rem',
+              marginBottom: '2rem',
               borderRadius: '.5rem',
               backgroundColor: customTheme.mode[colorMode].codeBackground,
             },
