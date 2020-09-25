@@ -6,7 +6,6 @@ const MDXLayout = dynamic(() => import('./Mdx'));
 export interface IDefaultLayoutProps {
   children?: React.ReactNode;
   frontMatter?;
-  landingPage?: boolean;
 }
 
 export default function DefaultLayout({
@@ -16,6 +15,6 @@ export default function DefaultLayout({
   return frontMatter ? (
     <MDXLayout frontMatter={frontMatter}>{children}</MDXLayout>
   ) : (
-    <Layout landingPage>{children}</Layout>
+    <Layout>{children}</Layout>
   );
 }

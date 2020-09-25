@@ -6,5 +6,5 @@ import { useRouter } from 'next/router';
 
 export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
-  return <Layout landingPage></Layout>;
+  return <Layout></Layout>;
 }

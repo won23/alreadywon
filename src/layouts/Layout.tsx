@@ -17,15 +17,12 @@ import { useRouter } from 'next/router';
 export interface ILayoutProps {
   title?: string;
   children?: any;
-  landingPage?: boolean;
 }
 
-export default function Layout({
-  landingPage = false,
-  children,
-}: ILayoutProps) {
+export default function Layout({ children }: ILayoutProps) {
   const { colorMode } = useColorMode();
   const router = useRouter();
+  const landingPage = router.asPath === '/' ? true : false;
   const navFlexSetting: FlexProps = {
     width: '100%',
     flexDirection: 'column',
@@ -80,7 +77,7 @@ export default function Layout({
         <Box
           backgroundImage={{
             xs: "url('/images/background_mobile.jpg')",
-            md: "url('/images/background.jp2')",
+            md: "url('/images/background.jpeg')",
           }}
           backgroundPosition={{ xs: 'top', md: 'center' }}
           backgroundRepeat="no-repeat"
