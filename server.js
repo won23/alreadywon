@@ -17,7 +17,7 @@ const handle = app.getRequestHandler();
 const server = functions.https.onRequest((request, response) => {
   // log the page.js file or resource being requested
   console.log('File: ' + request.originalUrl);
-  response.set('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+  response.set('Cache-Control', 'public, max-age=31536000 , s-maxage=31536000');
   return app.prepare().then(() => handle(request, response));
 });
 
