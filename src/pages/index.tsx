@@ -6,52 +6,5 @@ import { useRouter } from 'next/router';
 
 export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
-  const router = useRouter();
-
-  const handleClick = () => {
-    router.push('/home');
-  };
-
-  return (
-    <Box
-      backgroundImage={{
-        xs: "url('/images/background_mobile.jpg')",
-        md: "url('/images/background.jpeg')",
-      }}
-      backgroundPosition={{ xs: 'top', md: 'center' }}
-      backgroundRepeat="no-repeat"
-      height="100vh"
-      width="100%"
-      backgroundSize={{ xs: '300% auto', md: '100% auto' }}
-    >
-      <Flex
-        justifyContent="center"
-        alignContent="center"
-        flexDirection="column"
-      >
-        <Flex
-          flexDirection="column"
-          justifyContent={{ xs: 'flex-end', md: 'center' }}
-          height="100vh"
-          color="white"
-          px={{ xs: '3rem', md: '10rem' }}
-          py={{ xs: '4rem' }}
-        >
-          <Heading as="h1">ALREADY WON</Heading>
-          <Text fontSize="lg" maxW="40rem">
-            A personal website dedicated to those who may already have
-          </Text>
-          <Button
-            variant="outline"
-            mt="4rem"
-            size="md"
-            maxW="6rem"
-            onClick={handleClick}
-          >
-            Explore
-          </Button>
-        </Flex>
-      </Flex>
-    </Box>
-  );
+  return <Layout landingPage></Layout>;
 }
