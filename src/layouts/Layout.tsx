@@ -17,10 +17,13 @@ import { useRouter } from 'next/router';
 export interface ILayoutProps {
   title?: string;
   children?: any;
-  landingPage: boolean;
+  landingPage?: boolean;
 }
 
-export default function Layout({ landingPage, children }: ILayoutProps) {
+export default function Layout({
+  landingPage = false,
+  children,
+}: ILayoutProps) {
   const { colorMode } = useColorMode();
   const router = useRouter();
   const navFlexSetting: FlexProps = {
