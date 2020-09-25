@@ -77,7 +77,7 @@ export default function Layout({ landingPage, children }: ILayoutProps) {
         <Box
           backgroundImage={{
             xs: "url('/images/background_mobile.jpg')",
-            md: "url('/images/background.jpeg')",
+            md: "url('/images/background.jp2')",
           }}
           backgroundPosition={{ xs: 'top', md: 'center' }}
           backgroundRepeat="no-repeat"
