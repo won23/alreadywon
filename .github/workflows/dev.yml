@@ -1,9 +1,9 @@
 name: CI
 on:
   push:
-    branches: [master]
+    branches: [dev]
   pull_request:
-    branches: [master]
+    branches: [dev]
 
 jobs:
   build:
@@ -14,11 +14,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - name: Create DotENV config
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.INPUT_ENVKEY_GA_ID }}
-          file_name: .env
       - name: Install Dependencies
         run: |
           yarn
@@ -26,6 +21,6 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --project already-won --only functions:nextjs-server,hosting:prod
+          args: deploy --project already-won --only functions:nextjs-devServer,hosting:dev
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

@@ -21,4 +21,11 @@ const server = functions.https.onRequest((request, response) => {
   return app.prepare().then(() => handle(request, response));
 });
 
-exports.nextjs = { server };
+const devServer = functions.https.onRequest((request, response) => {
+  // log the page.js file or resource being requested
+  console.log('File: ' + request.originalUrl);
+  response.set('Cache-Control', 'public, max-age=31536000 , s-maxage=31536000');
+  return app.prepare().then(() => handle(request, response));
+});
+
+exports.nextjs = { server, devServer };

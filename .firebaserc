@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "already-won": "already-won"
+  },
+  "targets": {
+    "already-won": {
+      "hosting": {
+        "prod": [
+          "already-won"
+        ],
+        "dev": [
+          "alreadywon-dev"
+        ]
+      }
+    }
+  }
+}
