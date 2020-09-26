@@ -33,12 +33,13 @@
   },
   "hosting": [
     {
+      "target": "prod",
       "site": "already-won",
       "public": "public/",
       "cleanUrls": true,
       "headers": [
         {
-          "source": "**/*.@(jpg|jpeg|gif|png|jp2)",
+          "source": "**/*.@(jpg|jpeg|gif|png)",
           "headers": [
             {
               "key": "Cache-Control",
@@ -60,6 +61,38 @@
         {
           "source": "**",
           "function": "nextjs-server"
+        }
+      ]
+    },
+    {
+      "site": "alreadywon-dev",
+      "target": "dev",
+      "public": "public/",
+      "cleanUrls": true,
+      "headers": [
+        {
+          "source": "**/*.@(jpg|jpeg|gif|png)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=31536000"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(css|js)/**",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "max-age=31536000"
+            }
+          ]
+        }
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "nextjs-devServer"
         }
       ]
     }
