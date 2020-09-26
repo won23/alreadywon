@@ -11,8 +11,8 @@ import {
   Image,
 } from '@chakra-ui/core';
 
-export interface IResumeProps {}
-import resumeData from '../configs/resume-data';
+export interface IAboutProps {}
+import aboutData from '../configs/about-data';
 import Reference from 'src/components/Reference';
 function TechDetail(props: { title: string; children: any }) {
   return (
@@ -49,11 +49,12 @@ function SectionHeader(props: {
   );
 }
 
-export default function Resume(props: IResumeProps) {
+export default function About(props: IAboutProps) {
   return (
     <Layout>
       <Flex flexDir="column" alignItems="space-between">
-        <Heading mb="1rem">Resume</Heading>
+        <Heading mb="1rem">About Me</Heading>
+
         <Flex
           justifyContent={{ xs: 'center', sm: 'space-between' }}
           alignItems="center"
@@ -81,7 +82,7 @@ export default function Resume(props: IResumeProps) {
             rounded="full"
             borderColor="gray.500"
             borderWidth={2}
-            src="images/resume.jpg"
+            src="images/about.jpg"
             alt="headshot"
             shadow={2}
             objectFit="cover"
@@ -92,7 +93,7 @@ export default function Resume(props: IResumeProps) {
         <Divider mt="1rem"></Divider>
         <Flex flexDir={{ xs: 'column', sm: 'row' }}>
           <Box flex={2} p={{ xs: '0', sm: '1rem' }}>
-            {resumeData.employers.map((employer, index) => {
+            {aboutData.employers.map((employer, index) => {
               return (
                 <Box>
                   <Box>
@@ -146,7 +147,7 @@ export default function Resume(props: IResumeProps) {
           <Box p="1rem" flex={1}>
             <Box mb="1rem">
               <SectionHeader>Languages, Frameworks, Tools</SectionHeader>
-              {resumeData.technologies.map((item, index) => {
+              {aboutData.technologies.map((item, index) => {
                 return (
                   <TechDetail key={index} title={item.title}>
                     {item.details}
@@ -156,7 +157,7 @@ export default function Resume(props: IResumeProps) {
             </Box>
 
             <SectionHeader>Certifications</SectionHeader>
-            {resumeData.certifications.map((certification) => {
+            {aboutData.certifications.map((certification) => {
               return (
                 <Box mb="1rem" key={certification.id}>
                   <TechDetail title={certification.name}>
@@ -177,7 +178,7 @@ export default function Resume(props: IResumeProps) {
             })}
 
             <SectionHeader>Education</SectionHeader>
-            {resumeData.education.map((item) => {
+            {aboutData.education.map((item) => {
               return (
                 <TechDetail title={item.degree}>{item.orgName}</TechDetail>
               );

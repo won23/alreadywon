@@ -75,12 +75,8 @@ export default function Navbar(props: INavbarProps) {
       path: '/blog',
     },
     {
-      name: 'Resume',
-      path: '/resume',
-    },
-    {
-      name: 'Contact',
-      path: '/contact',
+      name: 'About',
+      path: '/about',
     },
   ];
   const handleNavItemClicked = (href: string) => {
@@ -96,6 +92,7 @@ export default function Navbar(props: INavbarProps) {
     <Box>
       <Flex {...navFlexSetting}>
         <Box flex={1}></Box>
+
         <Box flex={1} textAlign="center" width="100%">
           <NextLink href="/">
             <Heading as="h1" size="xl" cursor="pointer">
