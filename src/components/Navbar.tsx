@@ -29,26 +29,28 @@ const NavItem = (props: INavItemProps) => {
     width: '100%',
     cursor: 'pointer',
     border: { xs: '1px', sm: 'none' },
-    borderColor: 'gray.100',
-    role: 'group',
     color: 'gray.500',
   };
 
+  const hoverStyle: PseudoBoxProps = {
+    color: '#F7FAFC',
+    textShadow: '0 0 15px #F7FAFC',
+    transition: 'all 0.2s ease-in-out',
+  };
+
   return (
-    <PseudoBox
+    <Box
       {...navItemStyle}
       onClick={() => props.handleNavItemClicked(props.href)}
     >
       <PseudoBox
         display="block"
-        // fontWeight="semibold"
-        _hover={{ fontWeight: 'semibold' }}
-        _groupHover={{ color: 'black' }}
+        _hover={{ fontWeight: 'semibold', ...hoverStyle }}
         fontSize="xl"
       >
         {props.children}
       </PseudoBox>
-    </PseudoBox>
+    </Box>
   );
 };
 
@@ -79,6 +81,16 @@ export default function Navbar(props: INavbarProps) {
       path: '/about',
     },
   ];
+  const homeHoverStyle: PseudoBoxProps = {
+    textShadow: '0 0 15px #F7FAFC',
+    // text-shadow: 0 0 5px #ff0000;
+    // boxShadow: '0 0 25px #F7FAFC',
+    // borderRadius: '4rem',
+    transition: 'all .5s ease-in-out',
+    // padding: '1rem',
+    // box-shadow: 0 0 15px #d35400;
+    // text-shadow: 0 0 15px #d35400;
+  };
   const handleNavItemClicked = (href: string) => {
     setShow(!show);
     router.push(href);
@@ -95,9 +107,11 @@ export default function Navbar(props: INavbarProps) {
 
         <Box flex={1} textAlign="center" width="100%">
           <NextLink href="/">
-            <Heading as="h1" size="xl" cursor="pointer">
-              TW
-            </Heading>
+            <PseudoBox _hover={{ ...homeHoverStyle }}>
+              <Heading as="h1" size="xl" cursor="pointer">
+                TW
+              </Heading>
+            </PseudoBox>
           </NextLink>
         </Box>
         <Flex flex={1} justifyContent="center">

@@ -131,7 +131,7 @@ export default function Home(props: IHomeProps) {
 
         <Divider my="2rem" backgroundColor="gray" width="100%" />
         <Flex flexDirection="column" alignItems="center">
-          <Heading as="h2" size="md" mb={4}>
+          <Heading as="h2" size="md" mb={4} textAlign="center">
             Interested in learning more?
           </Heading>
           <Text>
