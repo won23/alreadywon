@@ -10,14 +10,14 @@ export default {
   mode: {
     light: {
       background: 'white',
-      color: '#1A202C',
+      color: '#1A202C', //gray 800
       panelBackground: 'gray.200',
-      codeBackground: '#1A202C',
+      codeBackground: '#1A202C', //gray 800
     },
     dark: {
       background: '#1A202C', //gray 800
       panelBackground: 'gray.700',
-      color: 'white',
+      color: '#F7FAFC', //gray 50
       codeBackground: '#2D3748',
     },
   },
