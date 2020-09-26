@@ -17,7 +17,12 @@ export default function Mdx({ frontMatter, children }: IMdxProps) {
   const { Heading, Divider } = chakraComponents;
   return (
     <Layout>
-      <Heading mb="1rem">{frontMatter.title}</Heading>
+      <Heading mb="1rem" as="h1">
+        {frontMatter.title}
+      </Heading>
+      <Heading mb="1rem" as="h2" fontSize="lg" color="gray.500">
+        {frontMatter.description}
+      </Heading>
       <Divider mb="1rem" />
       <MDXProvider components={{ ...MDXComponents, ...chakraComponents }}>
         {children}
