@@ -14,9 +14,6 @@ export interface IMdxProps {
 export default function Mdx({ frontMatter, children }: IMdxProps) {
   const router = useRouter();
 
-  useEffect(() => {
-    router.push(window.location.hash);
-  }, []);
   const { Heading, Divider } = chakraComponents;
   return (
     <Layout>
