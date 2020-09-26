@@ -68,7 +68,7 @@ export default function Resume(props: IResumeProps) {
               high-performing teams.
             </Text>
             <Text>
-              I'm a versatile leader and team-player, having held a variety of
+              As a versatile leader and team-player, I've held a variety of
               different roles in management as well as individual contribution.
               Below I've listed selected accomplishments throughout my career.
             </Text>
