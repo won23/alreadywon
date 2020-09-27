@@ -120,6 +120,7 @@ export default function Navbar(props: INavbarProps) {
             display={{ xs: 'block', sm: 'none' }}
             onClick={handleToggle}
             cursor="pointer"
+            my="auto"
           >
             <GiHamburgerMenu />
           </Box>
