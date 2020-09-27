@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 
 import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import DarkMode from './DarkMode';
 export interface INavItemProps {
   href: string;
   children?;
@@ -137,22 +138,11 @@ export default function Navbar(props: INavbarProps) {
                 {navItem.name}
               </NavItem>
             ))}
-            {colorMode === 'light' ? (
-              <IconButton
-                aria-label="Night mode"
-                icon="moon"
-                onClick={toggleColorMode}
-                variant="ghost"
-              ></IconButton>
-            ) : (
-              <IconButton
-                variant="ghost"
-                aria-label="Light mode"
-                icon="sun"
-                onClick={toggleColorMode}
-              ></IconButton>
-            )}
           </Box>
+          <DarkMode
+            size={30}
+            style={{ alignSelf: 'center', marginLeft: '1rem' }}
+          ></DarkMode>
         </Flex>
       </Flex>
       <Box
