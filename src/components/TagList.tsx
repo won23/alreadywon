@@ -8,54 +8,52 @@ import {
   Link,
   Flex,
 } from '@chakra-ui/core';
-import { IPost } from '../lib/posts';
+import { useRouter } from 'next/router';
+
+export function TagItem({ tag, uniqueTagCount, onClick, selected }) {
+  return (
+    <Link
+      onClick={() => onClick(tag)}
+      fontWeight={selected ? 'bold' : 'normal'}
+    >
+      {tag} ({uniqueTagCount})
+    </Link>
+  );
+}
 
 export interface ITagListProps {
-  tagRemoveHandler;
-  tagClickHandler;
-  posts: IPost[];
-  view: string | string[];
   uniqueTagCount: { [key: string]: number };
+  selectedTags: string[];
 }
 
 export default function TagList({
-  tagClickHandler,
-  tagRemoveHandler,
-  posts,
-  view,
   uniqueTagCount,
+  selectedTags,
 }: ITagListProps) {
+  const router = useRouter();
+  function addTagToUri(tag) {
+    const newTags = selectedTags.includes(tag)
+      ? selectedTags.filter((item) => item !== tag)
+      : [...selectedTags, tag];
+    router.push({
+      query: { tag: newTags },
+    });
+  }
+
   return (
     <Box minW="10rem" display={{ xs: 'none', sm: 'block' }}>
       <Heading mb="2rem">Tags</Heading>
-      <Box minH="3rem">
-        {view ? (
-          <>
-            <Heading fontSize="xs" display="inline">
-              {' '}
-              Viewing:{' '}
-            </Heading>
-            <Badge
-              alignSelf="center"
-              color="blue.500"
-              cursor="pointer"
-              onClick={() => tagRemoveHandler(view)}
-            >
-              {view}
-            </Badge>
-          </>
-        ) : (
-          <Heading fontSize="xs">Viewing all posts</Heading>
-        )}
-      </Box>
 
       <List styleType="disc">
         {Object.keys(uniqueTagCount).map((tag, index) => {
           return (
             <ListItem key={index} fontSize="sm">
-              <Link onClick={() => tagClickHandler(tag)}>
-                {tag} ({uniqueTagCount[tag]})
-              </Link>
+              <TagItem
+                tag={tag}
+                uniqueTagCount={uniqueTagCount[tag]}
+                onClick={addTagToUri}
+                selected={selectedTags.includes(tag) ? true : false}
+              ></TagItem>
             </ListItem>
           );
         })}

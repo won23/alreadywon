@@ -11,6 +11,7 @@ import {
   ListItem,
   Divider,
   Badge,
+  Flex,
 } from '@chakra-ui/core';
 import { useState, useEffect } from 'react';
 import TagList from '../components/TagList';
@@ -32,30 +33,25 @@ interface IProps {
 export default function Blog({ data }: IProps) {
   const { allPostsData, uniqueTagCount } = data;
   const [posts, setPosts] = useState(allPostsData);
+  const [tags, setTags] = useState([]);
   const router = useRouter();
-  function tagClickHandler(tag) {
-    router.push({
-      query: { tags: tag },
-    });
-  }
-
-  const tagRemoveHandler = (tag) => {
-    router.replace({
-      href: '/blog',
-    });
-  };
-
+  const { tag: queryTag }: { tag?: string[] } = router.query;
   useEffect(() => {
-    const { tags } = router.query;
-    if (tags) {
+    const formattedTags = queryTag
+      ? Array.isArray(queryTag)
+        ? queryTag
+        : [queryTag]
+      : [];
+    setTags(formattedTags);
+    if (formattedTags) {
       const filtered = allPostsData.filter((item) => {
-        return item.tags.includes(tags as string);
+        return formattedTags.every((tag) => item.tags.includes(tag));
       });
       setPosts(filtered);
     } else {
       setPosts(allPostsData);
     }
-  }, [router.query]);
+  }, [queryTag]);
 
   return (
     <Layout>
@@ -65,29 +61,39 @@ export default function Blog({ data }: IProps) {
             Thoughts... and Other Stuff
           </Heading>
 
-          {posts?.map(({ id, date, title, description }) => {
-            return (
-              <Box key={id}>
-                <Heading as="h2" fontSize="md">
-                  <NextLink href="/posts/[id]" as={`/posts/${id}`}>
-                    <Link>{title}</Link>
-                  </NextLink>
-                </Heading>
-                <Text fontSize="sm"> {description}</Text>
+          {posts.length ? (
+            posts.map(({ id, title, description }) => {
+              return (
+                <Box key={id}>
+                  <Heading as="h2" fontSize="md">
+                    <NextLink href="/posts/[id]" as={`/posts/${id}`}>
+                      <Link>{title}</Link>
+                    </NextLink>
+                  </Heading>
+                  <Text fontSize="sm"> {description}</Text>
+                </Box>
+              );
+            })
+          ) : (
+            <Flex
+              fontSize="xl"
+              minH="10rem"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Box>
+                <Text textAlign="center" fontSize="5rem">
+                  👀
+                </Text>
+                Nothing to see here. Try removing some filters!
               </Box>
-            );
-          })}
+            </Flex>
+          )}
         </Box>
         <Box display={{ xs: 'none', sm: 'block' }}>
           <Divider orientation="vertical" mx="3rem" minHeight="10rem"></Divider>
         </Box>
-        <TagList
-          posts={posts}
-          uniqueTagCount={uniqueTagCount}
-          tagClickHandler={tagClickHandler}
-          tagRemoveHandler={tagRemoveHandler}
-          view={router.query.tags as string}
-        ></TagList>
+        <TagList uniqueTagCount={uniqueTagCount} selectedTags={tags}></TagList>
       </Grid>
     </Layout>
   );
