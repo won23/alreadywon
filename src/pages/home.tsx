@@ -116,9 +116,7 @@ export default function Home(props: IHomeProps) {
               </Heading>
               <Text fontSize="sm">
                 A bunch of new things centered around well-being, learning, and{' '}
-                <Reference
-                  link={{ href: '/blog', query: { tags: 'projects' } }}
-                >
+                <Reference link={{ href: '/blog', query: { tag: 'projects' } }}>
                   creating things
                 </Reference>
                 .
