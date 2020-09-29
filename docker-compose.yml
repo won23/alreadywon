@@ -2,10 +2,16 @@ version: '3.8'
 services:
   web:
     build: .
+    ports:
+      - 3000:3000
 
   test-server:
-    build:
-      context: .
-      dockerfile: Dockerfile.test
+    image: mcr.microsoft.com/playwright
+    working_dir: /app
+    volumes:
+      - type: bind
+        source: .
+        target: /app
     depends_on:
       - web
+    command: ['npm', 'test']

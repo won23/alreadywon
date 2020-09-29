@@ -19,14 +19,14 @@ jobs:
         run: |
           docker-compose up -d web
 
-      - name: Test
-        run: |
-          docker-compose up test-server
-
-      - name: Copy Build
+      - name: Copy Build files
         run: |
           docker cp alreadywon_web_1:app/nextjs .
           docker cp alreadywon_web_1:app/node_modules .
+
+      - name: Test
+        run: |
+          docker-compose up test-server
 
       - name: Cleanup
         run: docker-compose down
