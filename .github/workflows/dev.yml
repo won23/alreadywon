@@ -14,10 +14,23 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - name: Install Dependencies
+
+      - name: Run build
         run: |
-          yarn
-          yarn build
+          docker-compose up -d web
+
+      - name: Test
+        run: |
+          docker-compose up test-server
+
+      - name: Copy Build
+        run: |
+          docker cp alreadywon_web_1:app/nextjs .
+          docker cp alreadywon_web_1:app/node_modules .
+
+      - name: Cleanup
+        run: docker-compose down
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
