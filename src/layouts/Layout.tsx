@@ -15,11 +15,11 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 export interface ILayoutProps {
-  title?: string;
+  pageTitle?: string;
   children?: any;
 }
 
-export default function Layout({ children }: ILayoutProps) {
+export default function Layout({ children, pageTitle }: ILayoutProps) {
   const { colorMode } = useColorMode();
   const router = useRouter();
   const landingPage = router.asPath === '/' ? true : false;
@@ -46,7 +46,10 @@ export default function Layout({ children }: ILayoutProps) {
       color={customTheme.mode[colorMode].color}
     >
       <Head>
-        <title>{config.siteTitle}</title>
+        <title>
+          {config.siteTitle} |{' '}
+          {pageTitle ? pageTitle : ' Tech, Management, and Life'}
+        </title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="title" content={config.siteTitle} />
         <meta

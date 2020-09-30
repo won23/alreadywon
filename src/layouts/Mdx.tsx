@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 export interface IMdxProps {
   children?: React.ReactNode;
   frontMatter;
+  pageTitle: string;
 }
 
 export default function Mdx({ frontMatter, children }: IMdxProps) {
@@ -16,7 +17,7 @@ export default function Mdx({ frontMatter, children }: IMdxProps) {
 
   const { Heading, Divider } = chakraComponents;
   return (
-    <Layout>
+    <Layout pageTitle={frontMatter.title}>
       <Heading mb="1rem" as="h1">
         {frontMatter.title}
       </Heading>

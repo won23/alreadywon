@@ -22,7 +22,7 @@ export default function Home(props: IHomeProps) {
   };
 
   return (
-    <Layout>
+    <Layout pageTitle="Home">
       <Flex flexDirection="column" justifyContent="center" alignItems="center">
         <Flex
           flexDirection={{ xs: 'column', sm: 'row' }}

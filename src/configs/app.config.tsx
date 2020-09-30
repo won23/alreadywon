@@ -3,7 +3,7 @@ export interface IAppConfig {
 }
 
 const config: IAppConfig = {
-  siteTitle: 'Tim Won | Tech, Management, and Life',
+  siteTitle: 'Tim Won',
 };
 
 export default config;

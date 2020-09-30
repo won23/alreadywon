@@ -51,7 +51,7 @@ function SectionHeader(props: {
 
 export default function About(props: IAboutProps) {
   return (
-    <Layout>
+    <Layout pageTitle="About Me">
       <Flex flexDir="column" alignItems="space-between">
         <Heading mb="1rem">About Me</Heading>
 
