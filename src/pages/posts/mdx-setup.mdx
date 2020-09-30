@@ -1,0 +1,110 @@
+---
+title: 'Navigating the MDX Landscape'
+description: 'Tools and decisions when implementing MDX'
+date: '2020-09-30'
+tags:
+  - projects
+  - markdown
+  - react
+---
+
+# Table of Contents
+
+# Background
+
+[Previously](https://alreadywon.me/posts/upgrading-to-mdx), I talked about the features within MDX; now, I'm going to walk through some of the decision-making process and learnings along the way.
+
+# Tools Used
+
+## MDX Processing
+
+- [NextJS](NextJS) - Framework for building React Apps
+- [Next-mdx-enhanced](https://github.com/hashicorp/next-mdx-enhanced) - MDX processor
+
+## Remark plugins
+
+Remark plugins are markdown processors. A full list can be found [here](https://github.com/remarkjs/remark/blob/main/doc/plugins.md). The one's I used were:
+
+- [Emoji](https://github.com/rhysd/remark-emoji) :v: - for markdown emoji processing
+- [Image](https://github.com/remarkjs/remark-images) (and imageWrap) - to allow linking of images in markdown files
+- [ToC](https://github.com/remarkjs/remark-toc) - to summarize headings as a Table of Contents
+
+## Rehype plugins
+
+Rehype is a pre-processor for HTML. It's not quite clear to me the performance benefits of processing via Markdown vs HTML (many of the plugins overlap), but these are the one's I found useful:
+
+- [Slug](https://github.com/rehypejs/rehype-slug) - Add title headers for each of my markdown files
+- [AutoLink Headings](https://github.com/rehypejs/rehype-autolink-headings) - Add clickable title headers
+
+# Discussion and Learnings
+
+## Processor
+
+The official [MDX site](https://mdxjs.com/getting-started/next) provides a solid processor for NextJS, but after having implemented it, I realized initial shortcomings. Each MDX file _was_ the page, thereby prohibiting any "higher-level" component from providing a consistent UI to the user experience.
+
+I didn't want to have naked markdown pages-- I needed to wrap my MDX pages in a layout-- so I found next-mdx-enhanced which proposed an alternate solution of having a "default layout" that could wrap all my MDX files.
+
+Previously, I stored all my posts in a /posts directory, and used NextJS to create the pages dynamically Within the application, I would now need to move all my .mdx files as _pages_ and then create a _layout_ directory that would serve the primary structure (these were previously in a _components_ folder).
+
+```bash
+# Folder structure
+
++-- layouts.yml
+|   +-- index.tsx
+|   +-- Layout.tsx
+|   +-- Mdx.tsx
++-- pages
+|   +-- posts
+|       +-- this-post.mdx
+|   +-- _app_.tsx
+|   +-- _document.tsx
+|   +-- home.tsx
+|   +-- about.tsx
+|   +-- contact.tsx
++-- components
+    +-- AllTheWidgets.tsx
+```
+
+## Accessing metadata about the files
+
+While the individual pages work, a top-level /blog page needs to be able to display all the blog components. While previously I had a [dynamic route](https://nextjs.org/learn/basics/dynamic-routes) to create all the blog pages, now with this new folder structure, each page was post... so I would need to do a little refactoring to create a top-level view of the posts and information no the tags). Most of this was already done in the NextJS quickstart, but I'm basically using `fs` to read the src/pages/posts directory for files, parsing the .mdx metadata (title, date, tags, etc.), and then returning the result to the Blog.tsx page.
+
+## Customizing Components
+
+Rendering markdown pages return plain-ol HTML, which then needs to be replaced by a React component. [Chakra UI](https://chakra-ui.com/) made enhancing styles while maintaining headings seamless because of its [as prop](https://chakra-ui.com/style-props#the-as-prop), which "allows you to pass a HTML tag or another component to a Chakra component to be rendered as the base tag of that component along with all it's styles and props." To do this, I created a MdxComponents Component, which was just a mapping of HTML -> React Components (that render HTML).
+
+```jsx
+// MdxComponents.tsx (representative components)
+
+export default MDXComponents = {
+  h1: (props) => <Heading as="h1" size="xl" {...props} />,
+  h2: (props) => <Heading as="h2" size="lg" {...props} />,
+  h3: (props) => <Heading as="h3" size="md" {...props} />,
+  // {...}
+};
+```
+
+And imported these components via the MdxProvider:
+
+```jsx
+// Mdx.tsx
+
+import MDXComponents from 'src/components/MdxComponents';
+import * as chakraComponents from '@chakra-ui/core';
+
+<MDXProvider components={{ ...MDXComponents, ...chakraComponents }}>
+  {children}
+</MDXProvider>;
+```
+
+<Divider />
+
+# Last Thoughts
+
+Settling on a final decision about some of these strategies took me a bit to figure out, but overall, I'm happy with the result.
+
+It would be nice to have a way to have more targetted selectors when replacing components so that I could replace HTML tags under certain conditions (i.e. style the links of the body vs table of contents), but I haven't looked too much into it.
+
+Also, at times writing MDX files feel a bit like magic. The ecosystem of plugins as well as embedded jsx makes certain behaviors _seem_ like they should work well together, but ultimately don't. For example, I would like to throw that `<Divider />` under the Table of Contents, but that doesn't work because we're trying to get plugins and jsx to play together.
+
+I'll probably look more into this in the future when I have time, but this seems like a good start!
