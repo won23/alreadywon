@@ -56,11 +56,11 @@ export default function About(props: IAboutProps) {
         <Heading mb="1rem">About Me</Heading>
 
         <Flex
-          justifyContent={{ xs: 'center', sm: 'space-between' }}
+          justifyContent={{ base: 'center', sm: 'space-between' }}
           alignItems="center"
           flexWrap="wrap"
         >
-          <Box maxW="md" order={{ xs: 2, sm: 1 }}>
+          <Box maxW="md" order={{ base: 2, sm: 1 }}>
             <Text>
               I'm a diversified <strong>technologist</strong> and{' '}
               <strong>management consultant</strong> with over nine years of
@@ -76,7 +76,7 @@ export default function About(props: IAboutProps) {
           </Box>
 
           <Image
-            order={{ xs: 1, sm: 2 }}
+            order={{ base: 1, sm: 2 }}
             maxW="200px"
             minW="150px"
             rounded="full"
@@ -91,8 +91,8 @@ export default function About(props: IAboutProps) {
         </Flex>
 
         <Divider mt="1rem"></Divider>
-        <Flex flexDir={{ xs: 'column', sm: 'row' }}>
-          <Box flex={2} p={{ xs: '0', sm: '1rem' }}>
+        <Flex flexDir={{ base: 'column', sm: 'row' }}>
+          <Box flex={2} p={{ base: '0', sm: '1rem' }}>
             {aboutData.employers.map((employer, index) => {
               return (
                 <Box>

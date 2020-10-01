@@ -5,6 +5,7 @@ import {
   Heading,
   Flex,
   Divider,
+  HStack,
   Link as ChakraLink,
   useColorMode,
 } from '@chakra-ui/core';
@@ -36,13 +37,14 @@ export default function Contact(props: IContactProps) {
 
   function ContactItem(props) {
     return (
-      <Flex flexDirection="column" my={{ xs: '1rem', sm: '0rem' }}>
+      <Flex flexDirection="column" my={{ base: '1rem', sm: '0rem' }}>
         <Heading size="sm" as="h3">
           {props.title}
         </Heading>
         <Divider
           width="10%"
           borderColor={customTheme.mode[colorMode].color}
+          my="1rem"
         ></Divider>
         <Reference link={{ href: props.src, external: true }}>
           {props.linkName ? props.linkName : props.src}
@@ -55,7 +57,7 @@ export default function Contact(props: IContactProps) {
     <Layout>
       <Flex flexDirection="column">
         <Heading>Contact Info</Heading>
-        <Flex mt={'2rem'} flexWrap="wrap">
+        <HStack mt={'2rem'} flexWrap="wrap">
           {contactItems.map((item, index) => {
             if (index + 1 === contactItems.length) {
               // last one
@@ -83,14 +85,14 @@ export default function Contact(props: IContactProps) {
                   </ContactItem>
                   <Divider
                     orientation="vertical"
-                    borderColor={{ xs: '#E2E8F0 !important' }}
-                    display={{ xs: 'none', base: 'inherit' }}
+                    borderColor={{ base: '#E2E8F0 !important' }}
+                    display={{ base: 'none', md: 'inherit' }}
                   />
                 </Box>
               );
             }
           })}
-        </Flex>
+        </HStack>
       </Flex>
     </Layout>
   );

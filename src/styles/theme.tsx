@@ -1,7 +1,7 @@
 import { theme } from '@chakra-ui/core';
-
-export default {
-  ...theme,
+import { extendTheme } from '@chakra-ui/core';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
+const overrides = {
   fonts: {
     body: "'Raleway', sans-serif",
     heading: "'Raleway', sans-serif",
@@ -56,3 +56,5 @@ export default {
   //   widest: "0.1em",
   // },
 };
+
+export default extendTheme(overrides);

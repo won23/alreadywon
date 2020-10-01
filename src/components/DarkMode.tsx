@@ -77,10 +77,12 @@ export default function DarkMode({
     ...circle,
     config: animationProperties.springConfig,
   }) as React.CSSProperties;
+
   const maskedCircleProps = useSpring({
     ...mask,
     config: animationProperties.springConfig,
   }) as React.CSSProperties;
+
   const linesProps = useSpring({
     ...lines,
     config: animationProperties.springConfig,

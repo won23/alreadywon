@@ -1,5 +1,6 @@
-import { ThemeProvider, CSSReset, ColorModeProvider } from '@chakra-ui/core';
+import { ChakraProvider } from '@chakra-ui/core';
 import 'react-medium-image-zoom/dist/styles.css';
+import {} from '@chakra-ui/core';
 import '../styles/global.css';
 
 import customTheme from '../styles/theme';
@@ -13,18 +14,9 @@ interface IProps {
 Router.events.on('routeChangeComplete', (url) => gtag.pageView(url));
 
 export default function App({ Component, pageProps, children }: IProps) {
-  const [mounted, setMounted] = useState(false); // a hack to fix color mode temporarily
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
-    <ThemeProvider theme={customTheme}>
-      <ColorModeProvider>
-        <CSSReset />
-        {mounted && <Component {...pageProps} />}
-      </ColorModeProvider>
-    </ThemeProvider>
+    <ChakraProvider resetCSS theme={customTheme}>
+      <Component {...pageProps} />
+    </ChakraProvider>
   );
 }

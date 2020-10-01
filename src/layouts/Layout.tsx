@@ -79,14 +79,14 @@ export default function Layout({ children, pageTitle }: ILayoutProps) {
       ) : (
         <Box
           backgroundImage={{
-            xs: "url('/images/background_mobile.jpg')",
+            base: "url('/images/background_mobile.jpg')",
             md: "url('/images/background.jpeg')",
           }}
-          backgroundPosition={{ xs: 'top', md: 'center' }}
+          backgroundPosition={{ base: 'top', md: 'center' }}
           backgroundRepeat="no-repeat"
           height="100vh"
           width="100%"
-          backgroundSize={{ xs: '300% auto', md: '100% auto' }}
+          backgroundSize={{ base: '300% auto', md: '100% auto' }}
         >
           <Flex
             justifyContent="center"
@@ -95,11 +95,11 @@ export default function Layout({ children, pageTitle }: ILayoutProps) {
           >
             <Flex
               flexDirection="column"
-              justifyContent={{ xs: 'flex-end', md: 'center' }}
+              justifyContent={{ base: 'flex-end', md: 'center' }}
               height="100vh"
               color="white"
-              px={{ xs: '3rem', md: '10rem' }}
-              py={{ xs: '4rem' }}
+              px={{ base: '3rem', md: '10rem' }}
+              py={{ base: '4rem' }}
             >
               <Heading as="h1">ALREADY WON</Heading>
               <Text fontSize="lg" maxW="40rem">

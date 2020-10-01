@@ -1,4 +1,6 @@
+import { ColorModeScript } from '@chakra-ui/core';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from 'react';
 import { GA_TRACKING_ID } from 'src/lib/gtag';
 
 class MyDocument extends Document {
@@ -34,6 +36,7 @@ class MyDocument extends Document {
         </Head>
 
         <body>
+          <ColorModeScript initialColorMode="light" />
           <Main />
           <NextScript />
         </body>

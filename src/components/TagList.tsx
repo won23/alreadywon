@@ -41,7 +41,7 @@ export default function TagList({
   }
 
   return (
-    <Box minW="10rem" display={{ xs: 'none', sm: 'block' }}>
+    <Box minW="10rem" display={{ base: 'none', sm: 'block' }}>
       <Heading mb="2rem">Tags</Heading>
 
       <List styleType="disc">

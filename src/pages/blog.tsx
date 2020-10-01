@@ -14,7 +14,7 @@ import {
   Flex,
 } from '@chakra-ui/core';
 import { useState, useEffect } from 'react';
-import TagList from '../components/TagList';
+import TagList from 'src/components/TagList';
 import { useRouter } from 'next/router';
 export async function getStaticProps(): Promise<{ props }> {
   const data = getSortedPostsData();
@@ -90,7 +90,7 @@ export default function Blog({ data }: IProps) {
             </Flex>
           )}
         </Box>
-        <Box display={{ xs: 'none', sm: 'block' }}>
+        <Box display={{ base: 'none', sm: 'block' }}>
           <Divider orientation="vertical" mx="3rem" minHeight="10rem"></Divider>
         </Box>
         <TagList uniqueTagCount={uniqueTagCount} selectedTags={tags}></TagList>

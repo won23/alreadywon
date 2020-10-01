@@ -3,11 +3,8 @@ import {
   Flex,
   Heading,
   FlexProps,
-  PseudoBox,
-  PseudoBoxProps,
   useColorMode,
-  Button,
-  IconButton,
+  BoxProps,
 } from '@chakra-ui/core';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -24,16 +21,16 @@ export interface INavItemProps {
 export interface INavbarProps {}
 
 const NavItem = (props: INavItemProps) => {
-  const navItemStyle: PseudoBoxProps = {
+  const navItemStyle = {
     px: '1rem',
     py: '1rem',
     width: '100%',
     cursor: 'pointer',
-    border: { xs: '1px', sm: 'none' },
+    border: { base: '1px', sm: 'none' },
     color: 'gray.500',
   };
 
-  const hoverStyle: PseudoBoxProps = {
+  const hoverStyle = {
     color: '#F7FAFC',
     textShadow: '0 0 15px #F7FAFC',
     transition: 'all 0.2s ease-in-out',
@@ -44,13 +41,13 @@ const NavItem = (props: INavItemProps) => {
       {...navItemStyle}
       onClick={() => props.handleNavItemClicked(props.href)}
     >
-      <PseudoBox
+      <Box
         display="block"
         _hover={{ fontWeight: 'semibold', ...hoverStyle }}
         fontSize="xl"
       >
         {props.children}
-      </PseudoBox>
+      </Box>
     </Box>
   );
 };
@@ -82,7 +79,7 @@ export default function Navbar(props: INavbarProps) {
       path: '/about',
     },
   ];
-  const homeHoverStyle: PseudoBoxProps = {
+  const homeHoverStyle: BoxProps = {
     textShadow: '0 0 15px #F7FAFC',
     // text-shadow: 0 0 5px #ff0000;
     // boxShadow: '0 0 25px #F7FAFC',
@@ -100,7 +97,6 @@ export default function Navbar(props: INavbarProps) {
   const handleToggle = (): void => {
     setShow(!show);
   };
-
   return (
     <Box>
       <Flex {...navFlexSetting}>
@@ -108,16 +104,16 @@ export default function Navbar(props: INavbarProps) {
 
         <Box flex={1} textAlign="center" width="100%">
           <NextLink href="/">
-            <PseudoBox _hover={{ ...homeHoverStyle }}>
+            <Box _hover={{ ...homeHoverStyle }}>
               <Heading as="h1" size="xl" cursor="pointer">
                 TW
               </Heading>
-            </PseudoBox>
+            </Box>
           </NextLink>
         </Box>
         <Flex flex={1} justifyContent="center">
           <Box
-            display={{ xs: 'block', sm: 'none' }}
+            display={{ base: 'block', sm: 'none' }}
             onClick={handleToggle}
             cursor="pointer"
             my="auto"
@@ -147,7 +143,7 @@ export default function Navbar(props: INavbarProps) {
         </Flex>
       </Flex>
       <Box
-        display={{ xs: show ? 'block' : 'none', sm: 'none' }}
+        display={{ base: show ? 'block' : 'none', sm: 'none' }}
         width={'full'}
         alignItems={'center'}
         height={'100vh'}

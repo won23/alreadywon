@@ -25,7 +25,7 @@ export default function Home(props: IHomeProps) {
     <Layout pageTitle="Home">
       <Flex flexDirection="column" justifyContent="center" alignItems="center">
         <Flex
-          flexDirection={{ xs: 'column', sm: 'row' }}
+          flexDirection={{ base: 'column', sm: 'row' }}
           justifyContent="center"
           alignItems="center"
           width="100%"
@@ -34,7 +34,7 @@ export default function Home(props: IHomeProps) {
             <Image
               src="/images/profile.jpg"
               alt="me"
-              size={{ xs: '3xs', sm: '2xs' }}
+              boxSize={{ base: '3xs', sm: '2xs' }}
               borderRadius="2rem"
               borderColor="gray.500"
               borderWidth={2}
@@ -43,7 +43,7 @@ export default function Home(props: IHomeProps) {
           </Box>
 
           <Flex
-            pt={{ xs: '1rem', md: '0' }}
+            pt={{ base: '1rem', md: '0' }}
             flex={1}
             flexDirection="column"
             width="100%"
@@ -52,7 +52,7 @@ export default function Home(props: IHomeProps) {
               as="h2"
               size="md"
               mb={4}
-              textAlign={{ xs: 'center', md: 'left' }}
+              textAlign={{ base: 'center', md: 'left' }}
               flex={1}
             >
               Hello world!
@@ -76,13 +76,13 @@ export default function Home(props: IHomeProps) {
             Things I'm up to
           </Heading>
           <Flex
-            flexDirection={{ xs: 'column', sm: 'row' }}
+            flexDirection={{ base: 'column', sm: 'row' }}
             justifyContent="space-between"
             width="100%"
             flexWrap="wrap"
           >
-            <Box flex={1} mt={'1rem'}>
-              <Heading size="sm" as="h3">
+            <Box flex={1} mt={'1rem'} pr="1rem">
+              <Heading fontSize="sm" as="h3">
                 Living...
               </Heading>
               <Text fontSize="sm">
@@ -93,8 +93,8 @@ export default function Home(props: IHomeProps) {
             </Box>
             <Divider orientation="vertical" />
 
-            <Box flex={1} mt={2}>
-              <Heading size="sm" as="h3">
+            <Box flex={1} mt={2} pr="1rem">
+              <Heading fontSize="sm" as="h3">
                 Working...
               </Heading>
               <Text fontSize="sm">
@@ -111,7 +111,7 @@ export default function Home(props: IHomeProps) {
             <Divider orientation="vertical" />
 
             <Box flex={1} mt={2}>
-              <Heading size="sm" as="h3">
+              <Heading fontSize="sm" as="h3">
                 Doing...
               </Heading>
               <Text fontSize="sm">
