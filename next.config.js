@@ -1,5 +1,4 @@
 const withMdxEnhanced = require('next-mdx-enhanced');
-var link = require('rehype-autolink-headings');
 var slug = require('rehype-slug');
 const emoji = require('remark-emoji');
 const image = require('remark-images');
@@ -29,7 +28,7 @@ module.exports = withMdxEnhanced({
     imageWrap,
     [toc, { tight: true }],
   ],
-  rehypePlugins: [slug, [link, linkOptions]],
+  rehypePlugins: [slug],
   usesSrc: true,
   extendFrontMatter: {
     process: (mdxContent, frontMatter) => {},
