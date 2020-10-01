@@ -1,7 +1,10 @@
+const { SERVER } = require('jest-playwright-preset');
+
 module.exports = {
   launchOptions: {
     headless: true,
   },
+  launchType: SERVER,
   contextOptions: {
     ignoreHTTPSErrors: true,
     viewport: {
