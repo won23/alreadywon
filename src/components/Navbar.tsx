@@ -83,6 +83,7 @@ function NavContent({ scrolled }: INavContentProps) {
   const handleNavItemClicked = (href: string) => {
     setShow(!show);
     router.push(href);
+    window.scrollTo(0, 0);
   };
 
   const handleToggle = (): void => {
@@ -116,13 +117,13 @@ function NavContent({ scrolled }: INavContentProps) {
             cursor="pointer"
             my="auto"
           >
-            <GiHamburgerMenu />
+            <GiHamburgerMenu size={scrolled ? '.8rem' : '1rem'} />
           </Box>
           <Box
             display={['none', 'flex']}
             width="auto"
+            height="100%"
             alignItems={'center'}
-            height={'auto'}
           >
             {navItems.map((navItem, index) => (
               <NavItem
@@ -171,6 +172,7 @@ const NavItem = ({
   const glow = useColorModeValue('#718096', 'white');
   const navItemStyle = {
     px: '1rem',
+    py: { base: '1rem', md: 'auto' },
     width: '100%',
     cursor: 'pointer',
     border: { base: '1px', sm: 'none' },
