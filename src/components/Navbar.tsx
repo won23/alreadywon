@@ -53,8 +53,6 @@ export default function Navbar(props: INavbarProps) {
     transition: '.25s',
     fontSize: '.5rem',
     position: 'fixed',
-    maxHeight: '40px',
-    zIndex: 9999,
   };
 
   return (
@@ -71,9 +69,8 @@ function NavContent({ scrolled }: INavContentProps) {
 
   const navFlexSetting: FlexProps = {
     as: 'nav',
-    py: 4,
+
     width: '100%',
-    height: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',
     borderBottom: '1px',
@@ -93,10 +90,9 @@ function NavContent({ scrolled }: INavContentProps) {
   };
 
   return (
-    <Flex width="100%">
+    <Flex width="100%" height="100%" flexDirection="column">
       <Flex {...navFlexSetting}>
         <Box flex={1}></Box>
-
         <Box flex={1} textAlign="center" width="100%">
           <NextLink href="/">
             <Box _hover={{ ...homeHoverStyle }}>
@@ -106,6 +102,7 @@ function NavContent({ scrolled }: INavContentProps) {
                 cursor="pointer"
                 fontSize={scrolled ? 'xl' : '3xl'}
                 transition=".2s"
+                py={scrolled ? '.5rem' : '1rem'}
               >
                 TW
               </Heading>
@@ -146,7 +143,7 @@ function NavContent({ scrolled }: INavContentProps) {
       </Flex>
       <Box
         display={{ base: show ? 'block' : 'none', sm: 'none' }}
-        width={'full'}
+        width={'100%'}
         alignItems={'center'}
         height={'100vh'}
       >
@@ -174,7 +171,6 @@ const NavItem = ({
   const glow = useColorModeValue('#718096', 'white');
   const navItemStyle = {
     px: '1rem',
-    py: '1rem',
     width: '100%',
     cursor: 'pointer',
     border: { base: '1px', sm: 'none' },
