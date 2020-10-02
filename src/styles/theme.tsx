@@ -21,6 +21,8 @@ const overrides = {
       codeBackground: '#2D3748',
     },
   },
+  useSystemColorMode: false,
+  initialColorMode: 'dark',
   // fontSizes: {
   //   xs: "12px",
   //   sm: "14px",

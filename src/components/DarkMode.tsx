@@ -23,7 +23,7 @@ export const defaultProperties = {
       cy: '23%',
     },
     svg: {
-      transform: 'rotate(40deg)',
+      transform: 'rotate(45deg)',
     },
     lines: {
       opacity: 0,
@@ -51,8 +51,8 @@ export default function DarkMode({
   children,
   size = 24,
   animationProperties = defaultProperties,
-  moonColor = 'white',
-  sunColor = 'black',
+  moonColor = 'black',
+  sunColor = 'white',
   style,
   ...rest
 }: IDarkModeProps) {
@@ -66,7 +66,7 @@ export default function DarkMode({
   const { colorMode, toggleColorMode } = useColorMode();
 
   const { circle, svg, lines, mask } = properties[
-    colorMode === 'dark' ? 'dark' : 'light'
+    colorMode === 'dark' ? 'light' : 'dark'
   ];
 
   const svgContainerProps = useSpring({
@@ -94,7 +94,7 @@ export default function DarkMode({
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      color={colorMode === 'dark' ? moonColor : sunColor}
+      color={colorMode === 'dark' ? sunColor : moonColor}
       fill="none"
       strokeWidth="2"
       strokeLinecap="round"
@@ -118,7 +118,7 @@ export default function DarkMode({
       <animated.circle
         cx="12"
         cy="12"
-        fill={colorMode ? moonColor : sunColor}
+        fill={colorMode ? moonColor : moonColor}
         style={centerCircleProps}
         mask="url(#myMask2)"
       />
