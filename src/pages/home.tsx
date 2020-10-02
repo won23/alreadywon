@@ -49,18 +49,16 @@ export default function Home(props: IHomeProps) {
             width="100%"
           >
             <Heading
-              as="h2"
+              as="h1"
               size="md"
-              mb={4}
+              my={4}
               textAlign={{ base: 'center', md: 'left' }}
               flex={1}
             >
-              Hello world!
+              Hello world! I'm <Reference>Tim Won</Reference>.
             </Heading>
 
-            <Box>
-              I'm <Reference>Tim</Reference> and welcome to my site.
-            </Box>
+            <Box> </Box>
           </Flex>
         </Flex>
         <Divider my="2rem" backgroundColor="gray" width="100%" />
@@ -73,7 +71,7 @@ export default function Home(props: IHomeProps) {
           borderRadius="1rem"
         >
           <Heading as="h2" size="md" mb={2}>
-            Things I'm up to
+            At a glance
           </Heading>
           <Flex
             flexDirection={{ base: 'column', sm: 'row' }}
