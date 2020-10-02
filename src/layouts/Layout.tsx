@@ -60,12 +60,7 @@ export default function Layout({ children, pageTitle }: ILayoutProps) {
           name="keywords"
           content="Tim, Won, Tim Won, PwC, Development, Technology, linkedin, github"
         />
-        <meta
-          property="og:image"
-          content={`https://og-image.now.sh/${encodeURI(
-            config.siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
+        <meta property="og:image" content="/images/background.jpg" />
         <meta name="og:title" content={config.siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
