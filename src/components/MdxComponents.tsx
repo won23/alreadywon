@@ -25,43 +25,43 @@ const LinkedHeading = (props) => {
       css={{
         '&:hover a': { opacity: 1 },
       }}
+      pointerEvents="auto"
       {...props}
     >
-      <chakra.div pointerEvents="auto">
-        {props.children}
-        <chakra.a
-          aria-label="anchor"
-          color="teal.300"
-          fontWeight="normal"
-          opacity={0}
-          ml="0.375rem"
-          href={`#${props.id}`}
-        >
-          #
-        </chakra.a>
-      </chakra.div>
+      {props.children}
+      <chakra.a
+        aria-label="anchor"
+        color="teal.300"
+        fontWeight="normal"
+        opacity={0}
+        ml="0.375rem"
+        href={`#${props.id}`}
+      >
+        #
+      </chakra.a>
     </chakra.h2>
   );
 };
 
 const MDXComponents = {
   h1: (props) => (
-    <LinkedHeading as="h1" fontSize="3xl" mb={'1.5rem'} {...props} />
+    <LinkedHeading apply="mdx.h1" as="h1" mb={'1.5rem'} {...props} />
   ),
   h2: (props) => (
-    <LinkedHeading as="h2" fontSize="2xl" mb={'1.5rem'} {...props} />
+    <LinkedHeading apply="mdx.h2" as="h2" mb={'1.5rem'} {...props} />
   ),
   h3: (props) => (
-    <LinkedHeading as="h3" fontSize="xl" mb={'1.5rem'} {...props} />
+    <LinkedHeading apply="mdx.h3" as="h3" mb={'1.5rem'} {...props} />
   ),
   h4: (props) => (
-    <LinkedHeading as="h4" fontSize="lg" mb={'1.5rem'} {...props} />
+    <LinkedHeading apply="mdx.h4" as="h4" mb={'1.5rem'} {...props} />
   ),
   p: (props) => <chakra.p apply="mdx.p" {...props} />,
+  hr: (props) => <chakra.hr apply="mdx.hr" {...props} />,
   ul: (props) => (
-    <List
-      as="ul"
+    <chakra.ul
       styleType="disc"
+      apply="mdx.ul"
       spacing={1}
       ml={'1rem'}
       mb={'1rem'}
@@ -69,8 +69,8 @@ const MDXComponents = {
     />
   ),
   ol: (props) => (
-    <List
-      as="ol"
+    <chakra.ol
+      apply="mdx.ol"
       styleType="decimal"
       spacing={1}
       ml={'1rem'}
@@ -78,9 +78,11 @@ const MDXComponents = {
       {...props}
     />
   ),
-  li: (props) => <ListItem {...props} />,
-  inlineCode: (props) => <Code as="code" {...props} />,
-  code: (props) => <CodeBlock code={props.children.trim()} {...props} />,
+  li: (props) => <chakra.li apply="mdx.ul" {...props} />,
+  inlineCode: (props) => <chakra.code apply="mdx.code" as="code" {...props} />,
+  code: (props) => (
+    <CodeBlock apply="mdx.codeBlock" code={props.children.trim()} {...props} />
+  ),
   a: (props) => <chakra.a apply="mdx.a" {...props} />,
   img: (props) => {
     const { colorMode } = useColorMode();

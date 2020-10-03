@@ -22,9 +22,39 @@ const overrides = {
     },
   },
   mdx: {
+    h1: {
+      fontSize: { base: 'xl', md: '3xl' },
+    },
+    h2: {
+      fontSize: { base: 'lg', md: '2xl' },
+    },
+    h3: {
+      fontSize: { base: 'md', md: 'xl' },
+    },
+    h4: {
+      fontSize: { base: 'sm', md: 'lg' },
+    },
+    ol: {
+      fontSize: { base: '.8rem', md: '1rem' },
+    },
+    ul: {
+      fontSize: { base: '.8rem', md: '1rem' },
+    },
+    code: {
+      fontSize: { base: '.8rem', md: '1rem' },
+    },
+    codeBlock: {
+      fontSize: { base: '.8rem', md: '1rem' },
+    },
     a: {
       color: 'blue.500',
       fontWeight: 'semibold',
+    },
+    p: {
+      fontSize: { base: '.8rem', md: '1rem' },
+    },
+    hr: {
+      my: '1rem',
     },
   },
   useSystemColorMode: false,

@@ -25,6 +25,11 @@ export default function Mdx({ frontMatter, children }: IMdxProps) {
       <Heading mb="1rem" as="h2" fontSize="lg" color="gray.500">
         {frontMatter.description}
       </Heading>
+
+      <Divider mb="1rem" />
+      <MDXProvider components={{ ...MDXComponents, ...chakraComponents }}>
+        {children}
+      </MDXProvider>
       <Wrap mb="1rem">
         <FaTags />
         {frontMatter.tags.map((tag) => {
@@ -36,10 +41,6 @@ export default function Mdx({ frontMatter, children }: IMdxProps) {
           );
         })}
       </Wrap>
-      <Divider mb="1rem" />
-      <MDXProvider components={{ ...MDXComponents, ...chakraComponents }}>
-        {children}
-      </MDXProvider>
     </Layout>
   );
 }

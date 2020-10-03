@@ -23,6 +23,7 @@ function CodeBlock(props) {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Box
           as={'pre'}
+          fontSize={{ base: '.8rem', md: '1rem' }}
           style={{
             ...style,
             ...{
