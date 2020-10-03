@@ -16,6 +16,7 @@ import React from 'react';
 import CodeBlock from './Codeblock';
 import Zoom from 'react-medium-image-zoom';
 import customTheme from 'src/styles/theme';
+import { mode } from '@chakra-ui/theme-tools';
 
 const LinkedHeading = (props) => {
   return (
@@ -30,7 +31,7 @@ const LinkedHeading = (props) => {
         {props.children}
         <chakra.a
           aria-label="anchor"
-          color="blue.500"
+          color="teal.300"
           fontWeight="normal"
           opacity={0}
           ml="0.375rem"
@@ -56,7 +57,7 @@ const MDXComponents = {
   h4: (props) => (
     <LinkedHeading as="h4" fontSize="lg" mb={'1.5rem'} {...props} />
   ),
-  p: (props) => <Text as="p" {...props} />,
+  p: (props) => <chakra.p apply="mdx.p" {...props} />,
   ul: (props) => (
     <List
       as="ul"

@@ -1,6 +1,6 @@
-import { theme } from '@chakra-ui/core';
 import { extendTheme } from '@chakra-ui/core';
-import { createBreakpoints } from '@chakra-ui/theme-tools';
+import { mode } from '@chakra-ui/theme-tools';
+
 const overrides = {
   fonts: {
     body: "'Raleway', sans-serif",
@@ -19,6 +19,12 @@ const overrides = {
       panelBackground: 'gray.700',
       color: '#F7FAFC', //gray 50
       codeBackground: '#2D3748',
+    },
+  },
+  mdx: {
+    a: {
+      color: 'blue.500',
+      fontWeight: 'semibold',
     },
   },
   useSystemColorMode: false,

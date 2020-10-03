@@ -16,7 +16,6 @@ export interface IMdxProps {
 
 export default function Mdx({ frontMatter, children }: IMdxProps) {
   const router = useRouter();
-  console.log(frontMatter);
   const { Heading, Divider } = chakraComponents;
   return (
     <Layout pageTitle={frontMatter.title}>
