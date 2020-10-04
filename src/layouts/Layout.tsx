@@ -17,9 +17,14 @@ import { useRouter } from 'next/router';
 export interface ILayoutProps {
   pageTitle?: string;
   children?: any;
+  showReadProgress?: boolean;
 }
 
-export default function Layout({ children, pageTitle }: ILayoutProps) {
+export default function Layout({
+  children,
+  pageTitle,
+  showReadProgress = false,
+}: ILayoutProps) {
   const { colorMode } = useColorMode();
   const router = useRouter();
   const landingPage = router.asPath === '/' ? true : false;
@@ -66,7 +71,7 @@ export default function Layout({ children, pageTitle }: ILayoutProps) {
       </Head>
       {!landingPage ? (
         <Box>
-          <Navbar></Navbar>
+          <Navbar showReadProgress={showReadProgress}></Navbar>
           <Flex {...navFlexSetting}>
             <main> {children}</main>
           </Flex>

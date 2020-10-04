@@ -15,7 +15,7 @@ export default function DefaultLayout({
   pageTitle,
 }: IDefaultLayoutProps) {
   return frontMatter ? (
-    <MDXLayout pageTitle={pageTitle} frontMatter={frontMatter}>
+    <MDXLayout pageTitle={pageTitle} frontMatter={frontMatter} showReadProgress>
       {children}
     </MDXLayout>
   ) : (

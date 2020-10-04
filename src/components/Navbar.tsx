@@ -5,14 +5,19 @@ import {
   FlexProps,
   BoxProps,
   useColorModeValue,
+  Progress,
 } from '@chakra-ui/core';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { CSSProperties, useEffect, useState } from 'react';
+import { CSSProperties, useEffect, useRef, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import navItems from 'src/configs/nav.config';
 import DarkMode from './DarkMode';
-export interface INavbarProps {}
+
+export interface INavbarProps {
+  showReadProgress: boolean;
+}
+
 export interface INavItemProps {
   href: string;
   children?;
@@ -25,16 +30,39 @@ export interface INavContentProps {
   scrolled;
 }
 
-export default function Navbar(props: INavbarProps) {
+export default function Navbar({ showReadProgress }: INavbarProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [yPosition, setYPosition] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
   const bg = useColorModeValue('white', 'gray.800');
+  const elementRef = useRef(null);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const body = document.body;
+    const html = document.documentElement;
+
+    setWindowHeight(
+      Math.max(
+        body.scrollHeight,
+        body.offsetHeight,
+        html.clientHeight,
+        html.scrollHeight,
+        html.offsetHeight
+      ) -
+        window.innerHeight -
+        elementRef.current.clientHeight
+    );
   }, []);
 
   const handleScroll = () => {
     const offset = window.scrollY;
+    setYPosition(offset);
     if (offset > 200) {
       setScrolled(true);
     } else {
@@ -56,8 +84,20 @@ export default function Navbar(props: INavbarProps) {
   };
 
   return (
-    <Flex backgroundColor={bg} style={scrolled ? fixedStyles : stickyStyles}>
+    <Flex
+      flexDirection="column"
+      backgroundColor={bg}
+      style={scrolled ? fixedStyles : stickyStyles}
+      ref={elementRef}
+    >
       <NavContent scrolled={scrolled}></NavContent>
+      {showReadProgress && (
+        <Progress
+          color="green"
+          size="sm"
+          value={(yPosition / windowHeight) * 100}
+        />
+      )}
     </Flex>
   );
 }

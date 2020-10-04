@@ -12,13 +12,14 @@ export interface IMdxProps {
   children?: React.ReactNode;
   frontMatter;
   pageTitle: string;
+  showReadProgress: boolean;
 }
 
 export default function Mdx({ frontMatter, children }: IMdxProps) {
   const router = useRouter();
   const { Heading, Divider } = chakraComponents;
   return (
-    <Layout pageTitle={frontMatter.title}>
+    <Layout pageTitle={frontMatter.title} showReadProgress={true}>
       <Heading mb="1rem" as="h1">
         {frontMatter.title}
       </Heading>
