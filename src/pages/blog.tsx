@@ -66,7 +66,7 @@ export default function Blog({ data }: IProps) {
               return (
                 <Box key={id}>
                   <Heading as="h2" fontSize="md">
-                    <NextLink href="/posts/[id]" as={`/posts/${id}`}>
+                    <NextLink href={`/posts/${id}`}>
                       <Link>{title}</Link>
                     </NextLink>
                   </Heading>
