@@ -91,6 +91,7 @@ const MDXComponents = {
         <Zoom overlayBgColorEnd={customTheme.mode[colorMode].background}>
           <Image
             {...props}
+            zIndex={0}
             objectFit="cover"
             fallbackSrc="http://placekitten.com/300/300"
             my="1rem"

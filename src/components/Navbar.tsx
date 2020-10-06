@@ -75,6 +75,7 @@ export default function Navbar({ showReadProgress }: INavbarProps) {
     width: '100%',
     transition: '.32s',
     position: 'sticky',
+    zIndex: 9999,
   };
   const fixedStyles: CSSProperties = {
     ...stickyStyles,
