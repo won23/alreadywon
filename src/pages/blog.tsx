@@ -64,7 +64,7 @@ export default function Blog({ data }: IProps) {
           {posts.length ? (
             posts.map(({ id, title, description }) => {
               return (
-                <Box key={id}>
+                <Box key={id} mb={'1.25rem'}>
                   <Heading as="h2" fontSize="md">
                     <NextLink href={`/posts/${id}`}>
                       <Link>{title}</Link>

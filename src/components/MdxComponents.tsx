@@ -1,22 +1,8 @@
-import {
-  Heading,
-  Text,
-  List,
-  ListItem,
-  Flex,
-  Code,
-  Image,
-  Box,
-  useColorMode,
-  Link,
-  chakra,
-} from '@chakra-ui/core';
-import NextLink from 'next/router';
+import { Flex, Image, useColorMode, chakra, Alert } from '@chakra-ui/core';
 import React from 'react';
 import CodeBlock from './Codeblock';
 import Zoom from 'react-medium-image-zoom';
 import customTheme from 'src/styles/theme';
-import { mode } from '@chakra-ui/theme-tools';
 
 const LinkedHeading = (props) => {
   return (
@@ -31,7 +17,7 @@ const LinkedHeading = (props) => {
       {props.children}
       <chakra.a
         aria-label="anchor"
-        color="teal.300"
+        color="gray.300"
         fontWeight="normal"
         opacity={0}
         ml="0.375rem"
@@ -83,7 +69,18 @@ const MDXComponents = {
   code: (props) => (
     <CodeBlock apply="mdx.codeBlock" code={props.children.trim()} {...props} />
   ),
-  a: (props) => <chakra.a apply="mdx.a" {...props} />,
+  blockquote: (props) => (
+    <Alert
+      role="none"
+      status="warning"
+      variant="left-accent"
+      as="blockquote"
+      rounded="4px"
+      my="1.5rem"
+      {...props}
+    />
+  ),
+  a: (props) => <chakra.a apply="mdx.a" mb={0} {...props} />,
   img: (props) => {
     const { colorMode } = useColorMode();
     return (

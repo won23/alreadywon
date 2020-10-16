@@ -32,7 +32,8 @@ const overrides = {
       fontSize: { base: 'md', md: 'xl' },
     },
     h4: {
-      fontSize: { base: 'sm', md: 'lg' },
+      fontSize: { base: 'sm', md: 'md' },
+      color: 'blue.300',
     },
     ol: {
       fontSize: { base: '.8rem', md: '1rem' },
@@ -52,6 +53,11 @@ const overrides = {
     },
     p: {
       fontSize: { base: '.8rem', md: '1rem' },
+      mb: '1.25rem',
+      lineHeight: 1.7,
+      'blockquote &': {
+        mt: 0,
+      },
     },
     hr: {
       my: '1rem',
