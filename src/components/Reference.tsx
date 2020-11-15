@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Link, Text } from '@chakra-ui/core';
+import { Box, Link, Text } from '@chakra-ui/core';
 import NextLink from 'next/link';
 
 export interface IReferenceProps {
   children?;
   link?: ILink;
+  [any: string]: string | {};
 }
 
 export interface ILink {
@@ -13,28 +14,39 @@ export interface ILink {
   external?: boolean;
 }
 
-export default function Reference({ children, link }: IReferenceProps) {
+export default function Reference({
+  children,
+  link,
+  ...rest
+}: IReferenceProps) {
   const color = 'blue.500';
   return link ? (
     link.external ? (
-      <Link
-        href={link.href ? link.href : link.href}
-        fontWeight="semibold"
-        color={color}
-        textDecoration="underline"
-        isExternal={true}
-      >
-        {children}
-      </Link>
+      <Box {...rest}>
+        <Link
+          href={link.href}
+          fontWeight="semibold"
+          color={color}
+          textDecoration="underline"
+          isExternal={true}
+        >
+          {children}
+        </Link>
+      </Box>
     ) : (
       <NextLink href={{ pathname: link.href, query: link.query }}>
-        <Link fontWeight="semibold" color={color} textDecoration="underline">
+        <Link
+          fontWeight="semibold"
+          color={color}
+          textDecoration="underline"
+          {...rest}
+        >
           {children}
         </Link>
       </NextLink>
     )
   ) : (
-    <Text fontWeight="semibold" display="inline" color={color}>
+    <Text fontWeight="semibold" display="inline" color={color} {...rest}>
       {children}
     </Text>
   );

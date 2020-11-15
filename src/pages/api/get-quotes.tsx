@@ -11,8 +11,7 @@ export default async function handler(req, res) {
   };
 
   const snapshot = await quotesRef.where('uploadedBy', '==', email).get();
-  console.log('snapshot', snapshot);
   const quotes = [];
   snapshot.forEach((doc) => quotes.push(doc.data()));
-  return res.status(200).json({ quotes: quotes });
+  return res.status(200).json({ status: quotes });
 }

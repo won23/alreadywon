@@ -11,6 +11,10 @@ const navItems: { name: string; path: string }[] = [
     name: 'About',
     path: '/about',
   },
+  {
+    name: 'Books',
+    path: '/quoteable',
+  },
 ];
 
 export default navItems;
