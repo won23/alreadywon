@@ -34,7 +34,6 @@
   "hosting": [
     {
       "target": "prod",
-      "site": "already-won",
       "public": "public/",
       "cleanUrls": true,
       "headers": [
@@ -65,7 +64,6 @@
       ]
     },
     {
-      "site": "alreadywon-dev",
       "target": "dev",
       "public": "public/",
       "cleanUrls": true,
