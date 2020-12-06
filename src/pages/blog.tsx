@@ -12,7 +12,7 @@ import {
   Divider,
   Badge,
   Flex,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import TagList from 'src/components/TagList';
 import { useRouter } from 'next/router';

@@ -7,7 +7,7 @@ import {
   ListItem,
   Link,
   Flex,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
 export function TagItem({ tag, uniqueTagCount, onClick, selected }) {

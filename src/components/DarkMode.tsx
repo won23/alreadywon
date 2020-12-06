@@ -1,5 +1,5 @@
 // Adapted and courtesy of https://jfelix.info/blog/using-react-spring-to-animate-svg-icons-dark-mode-toggle
-import { useColorMode } from '@chakra-ui/core';
+import { useColorMode } from '@chakra-ui/react';
 
 import * as React from 'react';
 import { animated, useSpring } from 'react-spring';

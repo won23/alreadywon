@@ -6,7 +6,7 @@ import {
   BoxProps,
   useColorModeValue,
   Progress,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { CSSProperties, useEffect, useRef, useState } from 'react';

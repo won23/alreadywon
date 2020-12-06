@@ -1,6 +1,6 @@
-import { ChakraProvider } from '@chakra-ui/core';
+import { ChakraProvider } from '@chakra-ui/react';
 import 'react-medium-image-zoom/dist/styles.css';
-import {} from '@chakra-ui/core';
+import {} from '@chakra-ui/react';
 import '../styles/global.css';
 
 import customTheme from '../styles/theme';

@@ -6,7 +6,7 @@ import {
   Heading,
   Text,
   useColorMode,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import customTheme from 'src/styles/theme';

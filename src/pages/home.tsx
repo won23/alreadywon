@@ -7,7 +7,7 @@ import {
   Text,
   Divider,
   useColorMode,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import Layout from '../layouts';
 import Reference, { ILink } from '../components/Reference';
 import customTheme from 'src/styles/theme';

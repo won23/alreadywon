@@ -1,4 +1,4 @@
-import { Flex, Image, useColorMode, chakra, Alert } from '@chakra-ui/core';
+import { Flex, Image, useColorMode, chakra, Alert } from '@chakra-ui/react';
 import React from 'react';
 import CodeBlock from './Codeblock';
 import Zoom from 'react-medium-image-zoom';

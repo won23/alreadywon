@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Grid, Heading, Text } from '@chakra-ui/core';
+import { Box, Divider, Flex, Grid, Heading, Text } from '@chakra-ui/react';
 import Axios from 'axios';
 import * as React from 'react';
 import Reference from 'src/components/Reference';

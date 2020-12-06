@@ -2,11 +2,11 @@ import { fromUnixTime } from 'date-fns';
 import { MDXProvider } from '@mdx-js/react';
 import MDXComponents from 'src/components/MdxComponents';
 import Layout from './Layout';
-import * as chakraComponents from '@chakra-ui/core';
+import * as chakraComponents from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { FaTags } from 'react-icons/fa';
-import { Box, Link, Wrap } from '@chakra-ui/core';
+import { Box, Link, Wrap } from '@chakra-ui/react';
 import Reference from 'src/components/Reference';
 export interface IMdxProps {
   children?: React.ReactNode;

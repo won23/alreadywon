@@ -8,7 +8,7 @@ import {
   HStack,
   Link as ChakraLink,
   useColorMode,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import Reference from 'src/components/Reference';
 import customTheme from 'src/styles/theme';
 

@@ -5,7 +5,7 @@ import {
   ButtonProps,
   useClipboard,
   useColorMode,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import vsDark from 'prism-react-renderer/themes/vsDark';

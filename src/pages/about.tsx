@@ -9,7 +9,7 @@ import {
   ListItem,
   List,
   Image,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 
 export interface IAboutProps {}
 import aboutData from '../configs/about-data';

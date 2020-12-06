@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Link, Text } from '@chakra-ui/core';
+import { Box, Link, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 export interface IReferenceProps {
