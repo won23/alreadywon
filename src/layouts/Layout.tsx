@@ -13,7 +13,7 @@ import customTheme from 'src/styles/theme';
 import config from 'src/configs/app.config';
 import React from 'react';
 import { useRouter } from 'next/router';
-
+import { motion } from 'framer-motion';
 export interface ILayoutProps {
   pageTitle?: string;
   children?: any;
@@ -27,6 +27,7 @@ export default function Layout({
 }: ILayoutProps) {
   const { colorMode } = useColorMode();
   const router = useRouter();
+
   const landingPage = router.asPath === '/' ? true : false;
   const navFlexSetting: FlexProps = {
     width: '100%',
@@ -41,6 +42,44 @@ export default function Layout({
 
   const handleClick = () => {
     router.push('/home');
+  };
+
+  const MotionBox = motion.custom(Box);
+  const MotionButton = motion.custom(Button);
+  const MotionHeader = motion.custom(Heading);
+  const MotionText = motion.custom(Text);
+
+  const boxVariants = {
+    initial: {
+      y: '100vw',
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        duration: 1,
+        when: 'beforeChildren',
+        staggerChildren: 0.4,
+      },
+    },
+  };
+
+  const childVariants = {
+    initial: { opacity: 0 },
+    visible: {
+      opacity: 1,
+    },
+  };
+
+  const buttonVariants = {
+    initial: { opacity: 0 },
+    visible: { opacity: 1 },
+    hover: {
+      scale: [1.2, 1, 1.2],
+      textShadow: '0px 0px 8px rgb(255,255,255)',
+      boxShadow: '0px 0px 8px rgb(255,255,255)',
+    },
   };
 
   return (
@@ -101,19 +140,28 @@ export default function Layout({
               px={{ base: '3rem', md: '10rem' }}
               py={{ base: '4rem' }}
             >
-              <Heading as="h1">ALREADY WON</Heading>
-              <Text fontSize="lg" maxW="40rem">
-                A personal website dedicated to those who may already have
-              </Text>
-              <Button
-                variant="outline"
-                mt="4rem"
-                size="md"
-                maxW="6rem"
-                onClick={handleClick}
+              <MotionBox
+                variants={boxVariants}
+                initial="initial"
+                animate="visible"
+                exit="exit"
               >
-                Explore
-              </Button>
+                <MotionHeader as="h1">ALREADY WON</MotionHeader>
+                <MotionText variants={childVariants} fontSize="lg" maxW="40rem">
+                  A personal website dedicated to those who may already have
+                </MotionText>
+                <MotionButton
+                  variant="outline"
+                  mt="4rem"
+                  size="md"
+                  maxW="6rem"
+                  onClick={handleClick}
+                  variants={buttonVariants}
+                  whileHover="hover"
+                >
+                  Explore
+                </MotionButton>
+              </MotionBox>
             </Flex>
           </Flex>
         </Box>
