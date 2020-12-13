@@ -12,7 +12,7 @@ const navItems: { name: string; path: string }[] = [
     path: '/about',
   },
   {
-    name: 'Books',
+    name: 'Readings',
     path: '/quoteable',
   },
 ];

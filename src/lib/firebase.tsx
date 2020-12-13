@@ -9,7 +9,10 @@ const quotesRef = db.collection('quotes');
 const booksRef = db.collection('books');
 
 const getBooks = async (email = 'tim.won.m3@gmail.com') => {
-  const snapshot = await booksRef.where('uploadedBy', '==', email).get();
+  const snapshot = await booksRef
+    .where('uploadedBy', '==', email)
+    .orderBy('title')
+    .get();
   const books = [];
   snapshot.forEach((doc) => books.push(doc.data()));
   return JSON.parse(JSON.stringify(books)); // https://github.com/vercel/next.js/issues/11993
