@@ -11,19 +11,58 @@ import {
 import Layout from '../layouts';
 import Reference, { ILink } from '../components/Reference';
 import customTheme from 'src/styles/theme';
+import { motion } from 'framer-motion';
+
 export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
+  const MotionFlex = motion.custom(Flex);
+  const MotionImage = motion.custom(Image);
+  const MotionText = motion.custom(Text);
   const { colorMode } = useColorMode();
-
   const homeInfo: ILink = {
     href:
       'https://www.google.com/maps/place/North+Bethesda,+MD/@39.0430774,-77.1551229,13z/data=!3m1!4b1!4m5!3m4!1s0x89b7cc3bfabff901:0x50407ec368483348!8m2!3d39.0445535!4d-77.1188678',
     external: true,
   };
 
+  const flexVariants = {
+    initial: {
+      opacity: 0,
+      scale: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 1,
+        when: 'beforeChildren',
+        staggerChildren: 0.4,
+      },
+    },
+  };
+
+  const textVariants = {
+    initial: { rotate: 0, opacity: 0 },
+    visible: {
+      originX: -5,
+      scale: [1, 1.1, 1, 1.1, 1],
+      opacity: 1,
+      transition: { delay: 0.7, duration: 2, ease: 'easeIn' },
+    },
+  };
+
   return (
     <Layout pageTitle="Home">
-      <Flex flexDirection="column" justifyContent="center" alignItems="center">
+      <MotionFlex
+        variants={flexVariants}
+        initial="initial"
+        animate="visible"
+        exit="exit"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Flex
           flexDirection={{ base: 'column', sm: 'row' }}
           justifyContent="center"
@@ -54,11 +93,18 @@ export default function Home(props: IHomeProps) {
               my={4}
               textAlign={{ base: 'center', md: 'left' }}
               flex={1}
+              display="inline"
             >
-              Hello world! I'm <Reference>Tim Won</Reference>.
+              Hello world!{' '}
+              <MotionText
+                variants={textVariants}
+                initial="initial"
+                animate="visible"
+                mt={'.5rem'}
+              >
+                I'm <Reference>Tim Won</Reference>.
+              </MotionText>
             </Heading>
-
-            <Box> </Box>
           </Flex>
         </Flex>
         <Divider my="2rem" backgroundColor="gray" width="100%" />
@@ -135,7 +181,7 @@ export default function Home(props: IHomeProps) {
             <Reference link={{ href: '/contact' }}>Contact</Reference> page
           </Text>
         </Flex>
-      </Flex>
+      </MotionFlex>
     </Layout>
   );
 }

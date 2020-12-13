@@ -9,7 +9,7 @@ import {
   VStack,
   ListItem,
   useColorMode,
-  useColorModeValue
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import Layout from 'src/layouts/Layout';
@@ -32,7 +32,7 @@ export async function getStaticProps() {
   // By returning { props: posts }, the Blog component
   // will receive `posts` as a prop at build time
   return {
-    props: {  books },
+    props: { books },
   };
 }
 
@@ -87,10 +87,19 @@ function BookList({ books, setBook }) {
 
 function Book({ book }) {
   const [expanded, setExpanded] = useState(false);
-  const bg = useColorModeValue('gray.100', 'blue.800')
-  console.log(book)
+  const bg = useColorModeValue('gray.100', 'blue.800');
+  console.log(book);
   return (
-    <Box borderColor="gray.500" borderRadius="sm" width="100%" border="1px" p="1rem .5rem" bg={bg}  onClick={()=>setExpanded(!expanded)} cursor="pointer">
+    <Box
+      borderColor="gray.500"
+      borderRadius="sm"
+      width="100%"
+      border="1px"
+      p="1rem .5rem"
+      bg={bg}
+      onClick={() => setExpanded(!expanded)}
+      cursor="pointer"
+    >
       <Flex flexDirection="column">
         <Heading as="h2" fontSize="lg">
           {book.title}
@@ -98,23 +107,25 @@ function Book({ book }) {
         <Heading as="h4" fontSize="xs" color="gray.500">
           {book.authors.join(', ')}
         </Heading>
-        <Text mt="1rem"  fontWeight="bold">
-          > Highlights ({book.quotes.length})
+        <Text mt="1rem" fontWeight="bold">
+          {'>'} Highlights ({book.quotes.length})
         </Text>
-        {
-          expanded ? <Quotes quotes={book.quotes}></Quotes>  : <></>
-        }
+        {expanded ? <Quotes quotes={book.quotes}></Quotes> : <></>}
       </Flex>
     </Box>
   );
 }
 
-function Quotes({quotes}){
-  return (<UnorderedList >
-    {quotes.map((quote,index)=>{
-      return (
-        <ListItem key={index} my="1rem" ml={'2rem'}>{quote}</ListItem>
-      )
-    })}
-  </UnorderedList>)
+function Quotes({ quotes }) {
+  return (
+    <UnorderedList>
+      {quotes.map((quote, index) => {
+        return (
+          <ListItem key={index} my="1rem" ml={'2rem'}>
+            {quote}
+          </ListItem>
+        );
+      })}
+    </UnorderedList>
+  );
 }
