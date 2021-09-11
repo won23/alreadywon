@@ -136,7 +136,7 @@ function NavContent({ scrolled }: INavContentProps) {
       <Flex {...navFlexSetting}>
         <Box flex={1}></Box>
         <Box flex={1} textAlign="center" width="100%">
-          <NextLink href="/">
+          <NextLink href="/home">
             <Box _hover={{ ...homeHoverStyle }}>
               <Heading
                 as="h1"
@@ -214,7 +214,6 @@ const NavItem = ({
   const navItemStyle = {
     px: '1rem',
     py: { base: '1rem', md: 'auto' },
-    width: '100%',
     cursor: 'pointer',
     border: { base: '1px', sm: 'none' },
     color: 'gray.500',

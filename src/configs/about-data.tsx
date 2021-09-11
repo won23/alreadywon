@@ -7,8 +7,8 @@ export default {
         {
           title: 'Organizational Leader & Manager',
           details: [
-            'Supported the build of a Product Engineering function within PwC including hiring & role design; process & technology definition; and cross-collaboration across other organizational disciplines',
-            'Lead teams in average size ranging from 3-8 members, performs 1:1s, coaching, and other performance assessments. Drove day-to-day operations including performing staffing and training for junior team members, budgeting and annual administrative processes, and promoting teaming/collaboration with client-service teams and external analysts',
+            'Supported the build of a Product Engineering function within PwC New Ventures including hiring & role design; process & technology definition; and cross-collaboration across other organizational disciplines',
+            'Lead teams in average size ranging from 4-12+ members, performed 1:1s, coaching, and other individual performance assessments. Drove day-to-day operations including performing staffing and training for junior team members, budgeting and annual administrative processes, and promoting teaming/collaboration with client-service teams and external analysts',
             'Manages on-shore, off-shore, and contractor resources including conducting performance reviews; interviewing, hiring, and outreach; and partnering/collaboration with outside teams throughout the enterprise',
           ],
         },
@@ -42,7 +42,7 @@ export default {
   technologies: [
     {
       title: 'Front-end',
-      details: 'Angular, React [basic]',
+      details: 'React, Angular',
     },
     {
       title: 'Back-end',

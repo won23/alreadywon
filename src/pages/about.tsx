@@ -63,15 +63,16 @@ export default function About(props: IAboutProps) {
           <Box maxW="md" order={{ base: 2, sm: 1 }}>
             <Text>
               I'm a diversified <strong>technologist</strong> and{' '}
-              <strong>management consultant</strong> with over nine years of
-              professional experience maintaining a professional focus on
-              designing software, leading product development, and cultivating
-              high-performing teams.
+              <strong>management consultant</strong> with over ten years of
+              professional experience with a focus on application development &
+              design, leading Product, and cultivating high-performing teams.
             </Text>
+            <br></br>
             <Text>
               As a versatile leader and team-player, I've held a variety of
-              different roles in management as well as individual contribution.
-              Below I've listed selected accomplishments throughout my career.
+              different roles in leadership/management as well as individual
+              contribution. Below are accomplishment highlights throughout my
+              career.
             </Text>
           </Box>
 
@@ -163,8 +164,7 @@ export default function About(props: IAboutProps) {
                   <TechDetail title={certification.name}>
                     <Reference
                       link={{
-                        href:
-                          'https://www.credential.net/b92dc647-104b-437e-b3d8-b56edcbe06a0?key=04065633a5b19f20b629366f1052154edc186a985a02650bb50ea4d1e68e80af',
+                        href: 'https://www.credential.net/b92dc647-104b-437e-b3d8-b56edcbe06a0?key=04065633a5b19f20b629366f1052154edc186a985a02650bb50ea4d1e68e80af',
                         external: true,
                       }}
                     >

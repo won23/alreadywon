@@ -54,7 +54,7 @@ export default function Blog({ data }: IProps) {
   }, [queryTag]);
 
   return (
-    <Layout pageTitle="Blog">
+    <Layout pageTitle="Writings">
       <Grid gridTemplateColumns={'1fr auto auto'} width="100%" height="100%">
         <Box>
           <Heading as="h1" mb="2rem">

@@ -1,15 +1,11 @@
 const navItems: { name: string; path: string }[] = [
   {
-    name: 'Home',
-    path: '/home',
-  },
-  {
-    name: 'Blog',
-    path: '/blog',
-  },
-  {
-    name: 'About',
+    name: 'About Me',
     path: '/about',
+  },
+  {
+    name: 'Writings',
+    path: '/blog',
   },
   {
     name: 'Readings',
