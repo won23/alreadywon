@@ -109,9 +109,14 @@ export default function Layout({
           name="keywords"
           content="Tim, Won, Tim Won, PwC, Development, Technology, linkedin, github"
         />
-        <meta property="og:image" content="/images/background.jpg" />
+        <meta
+          name="image"
+          property="og:image"
+          content="/images/wanderer.jpg"
+        ></meta>
         <meta name="og:title" content={config.siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="author" content="Tim Won"></meta>
       </Head>
       {!landingPage ? (
         <Box position="relative">
