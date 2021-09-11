@@ -51,136 +51,193 @@ export default function Home(props: IHomeProps) {
     },
   };
 
+  const photos = [
+    {
+      src: '/images/gallery/gallery_1.jpg',
+      width: 900,
+      height: 675,
+    },
+    {
+      src: '/images/gallery/gallery_2.jpg',
+      width: 4,
+      height: 3,
+    },
+    {
+      src: '/images/gallery/gallery_3.jpg',
+      width: 4,
+      height: 3,
+    },
+    {
+      src: '/images/gallery/gallery_4.jpg',
+      width: 4,
+      height: 3,
+    },
+    {
+      src: '/images/gallery/gallery_5.jpg',
+      width: 4,
+      height: 3,
+    },
+    {
+      src: '/images/gallery/gallery_6.jpg',
+      width: 4,
+      height: 3,
+    },
+    {
+      src: '/images/gallery/gallery_7.jpg',
+      width: 4,
+      height: 3,
+    },
+    {
+      src: '/images/gallery/gallery_8.jpg',
+      width: 4,
+      height: 3,
+    },
+    {
+      src: '/images/gallery/gallery_9.jpg',
+      width: 4,
+      height: 3,
+    },
+    {
+      src: '/images/gallery/gallery_10.jpg',
+      width: 4,
+      height: 3,
+    },
+  ];
+
   return (
-    <Layout pageTitle="Home">
-      <MotionFlex
-        variants={flexVariants}
-        initial="initial"
-        animate="visible"
-        exit="exit"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Flex
-          flexDirection={{ base: 'column', sm: 'row' }}
+    <Flex flexDir="column" position="relative">
+      <Layout pageTitle="Home" position="absolute">
+        <MotionFlex
+          variants={flexVariants}
+          initial="initial"
+          animate="visible"
+          exit="exit"
+          flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          width="100%"
         >
-          <Box flex={1}>
-            <Image
-              src="/images/profile.jpg"
-              alt="me"
-              boxSize={{ base: '3xs', sm: '2xs' }}
-              borderRadius="2rem"
-              borderColor="gray.500"
-              borderWidth={2}
-              mx="auto"
-            ></Image>
-          </Box>
-
-          <Flex
-            pt={{ base: '1rem', md: '0' }}
-            flex={1}
-            flexDirection="column"
-            width="100%"
-          >
-            <Heading
-              as="h1"
-              size="md"
-              my={4}
-              textAlign={{ base: 'center', md: 'left' }}
-              flex={1}
-              display="inline"
-            >
-              Hello world!{' '}
-              <MotionText
-                variants={textVariants}
-                initial="initial"
-                animate="visible"
-                mt={'.5rem'}
-              >
-                I'm <Reference>Tim Won</Reference>.
-              </MotionText>
-            </Heading>
-          </Flex>
-        </Flex>
-        <Divider my="2rem" backgroundColor="gray" width="100%" />
-        <Flex
-          flexDirection="column"
-          alignItems="center"
-          width="100%"
-          bg={customTheme.mode[colorMode].panelBackground}
-          padding="1.5rem"
-          borderRadius="1rem"
-        >
-          <Heading as="h2" size="md" mb={2}>
-            At a glance
-          </Heading>
           <Flex
             flexDirection={{ base: 'column', sm: 'row' }}
-            justifyContent="space-between"
+            justifyContent="center"
             width="100%"
-            flexWrap="wrap"
           >
-            <Box flex={1} mt={'1rem'} pr="1rem">
-              <Heading fontSize="sm" as="h3">
-                Living...
-              </Heading>
-              <Text fontSize="sm">
-                In the heartlands of the{' '}
-                <Reference link={homeInfo}>Washington DC Suburbs</Reference>{' '}
-                with my wife and dog.
-              </Text>
+            <Box flex={1}>
+              <Image
+                src="/images/profile.jpg"
+                alt="me"
+                boxSize={{ base: '3xs', sm: '2xs' }}
+                borderRadius="2rem"
+                borderColor="gray.500"
+                borderWidth={2}
+                mx="auto"
+                boxShadow="lg"
+              ></Image>
             </Box>
-            <Divider orientation="vertical" />
 
-            <Box flex={1} mt={2} pr="1rem">
-              <Heading fontSize="sm" as="h3">
-                Working...
+            <Flex
+              pt={{ base: '1rem', md: '0' }}
+              flex={1}
+              width="100%"
+              flexDir="column"
+            >
+              <Heading
+                as="h1"
+                size="md"
+                textAlign={{ base: 'center', md: 'left' }}
+                flex={1}
+                display="inline"
+                color={{ base: 'black', md: 'white' }}
+                mt="3.5rem"
+              >
+                <Text mb=".5rem">Hello world!</Text>
+                I'm <Reference>Tim Won</Reference>.
               </Heading>
-              <Text fontSize="sm">
-                At the global consultancy,
-                <Reference
-                  link={{ href: 'https://www.pwc.com', external: true }}
-                >
-                  {' '}
-                  PricewaterhouseCoopers{' '}
-                </Reference>
-                as a technologist building products and tools.
-              </Text>
-            </Box>
-            <Divider orientation="vertical" />
-
-            <Box flex={1} mt={2}>
-              <Heading fontSize="sm" as="h3">
-                Doing...
-              </Heading>
-              <Text fontSize="sm">
-                A bunch of new things centered around well-being, learning, and{' '}
-                <Reference link={{ href: '/blog', query: { tag: 'projects' } }}>
-                  creating things
-                </Reference>
-                .
-              </Text>
-            </Box>
+              <Box>
+                I'm a technologist, consultant, and team-builder. I'm into
+                learning, programming, and the arts. Doing my best to contribute
+                to humanity (at least on <i>most</i> days).
+              </Box>
+            </Flex>
           </Flex>
-        </Flex>
+          <Divider my="2rem" backgroundColor="gray" width="100%" />
+          <Flex
+            flexDirection="column"
+            alignItems="center"
+            width="100%"
+            bg={customTheme.mode[colorMode].panelBackground}
+            padding="1.5rem"
+            borderRadius="1rem"
+          >
+            <Heading as="h2" size="md" mb="1rem">
+              Me at a glance
+            </Heading>
+            <Flex
+              flexDirection={{ base: 'column', sm: 'row' }}
+              justifyContent="space-between"
+              width="100%"
+              flexWrap="wrap"
+            >
+              <Box flex={1} pr="1rem">
+                <Heading fontSize="sm" as="h3" mb={'.5rem'}>
+                  Living...
+                </Heading>
+                <Text fontSize="sm">
+                  In the heartlands of the{' '}
+                  <Reference link={homeInfo}>Washington DC Suburbs</Reference>{' '}
+                  with my wife and dog.
+                </Text>
+              </Box>
+              <Divider orientation="vertical" />
 
-        <Divider orientation="vertical" />
+              <Box flex={1} pr="1rem">
+                <Heading fontSize="sm" as="h3" mb={'.5rem'}>
+                  Working...
+                </Heading>
+                <Text fontSize="sm">
+                  At the global consultancy,
+                  <Reference
+                    link={{ href: 'https://www.pwc.com', external: true }}
+                  >
+                    {' '}
+                    PricewaterhouseCoopers{' '}
+                  </Reference>
+                  as a technologist building products and tools.
+                </Text>
+              </Box>
+              <Divider orientation="vertical" />
 
-        <Divider my="2rem" backgroundColor="gray" width="100%" />
-        <Flex flexDirection="column" alignItems="center">
-          <Heading as="h2" size="md" mb={4} textAlign="center">
-            Interested in learning more?
-          </Heading>
-          <Text>
-            I'm flattered. Find more information at my{' '}
-            <Reference link={{ href: '/contact' }}>Contact</Reference> page
-          </Text>
-        </Flex>
-      </MotionFlex>
-    </Layout>
+              <Box flex={1}>
+                <Heading fontSize="sm" as="h3" mb={'.5rem'}>
+                  Doing...
+                </Heading>
+                <Text fontSize="sm">
+                  A bunch of new things centered around well-being,
+                  self-improvement, and{' '}
+                  <Reference
+                    link={{ href: '/blog', query: { tag: 'projects' } }}
+                  >
+                    making things
+                  </Reference>
+                  .
+                </Text>
+              </Box>
+            </Flex>
+          </Flex>
+
+          <Divider orientation="vertical" />
+
+          <Divider my="2rem" backgroundColor="gray" width="100%" />
+          <Flex flexDirection="column" alignItems="center">
+            <Heading as="h2" size="md" mb={4} textAlign="center">
+              Interested in learning more?
+            </Heading>
+            <Text>
+              I'm flattered. Find more information at my{' '}
+              <Reference link={{ href: '/contact' }}>Contact</Reference> page
+            </Text>
+          </Flex>
+        </MotionFlex>
+      </Layout>
+    </Flex>
   );
 }

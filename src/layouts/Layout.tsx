@@ -1,5 +1,6 @@
 import {
   Box,
+  BoxProps,
   Button,
   Flex,
   FlexProps,
@@ -14,7 +15,9 @@ import config from 'src/configs/app.config';
 import React from 'react';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
-export interface ILayoutProps {
+import Banner from 'src/components/Banner';
+import ScrollContainer from 'react-indiana-drag-scroll';
+export interface ILayoutProps extends BoxProps {
   pageTitle?: string;
   children?: any;
   showReadProgress?: boolean;
@@ -24,11 +27,12 @@ export default function Layout({
   children,
   pageTitle,
   showReadProgress = false,
+  ...rest
 }: ILayoutProps) {
   const { colorMode } = useColorMode();
   const router = useRouter();
-
   const landingPage = router.asPath === '/' ? true : false;
+  const homePage = router.asPath === '/home' ? true : false;
   const navFlexSetting: FlexProps = {
     width: '100%',
     flexDirection: 'column',
@@ -88,6 +92,7 @@ export default function Layout({
       minH="100%"
       bg={customTheme.mode[colorMode].background}
       color={customTheme.mode[colorMode].color}
+      {...rest}
     >
       <Head>
         <title>
@@ -109,9 +114,26 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       {!landingPage ? (
-        <Box>
+        <Box position="relative">
           <Navbar showReadProgress={showReadProgress}></Navbar>
-          <Flex {...navFlexSetting}>
+          {homePage && (
+            <Box position="absolute">
+              <Banner opacity="50%" h="15rem" />
+              <Box
+                background="linear-gradient( transparent , black );"
+                position="absolute"
+                w="100%"
+                bottom={0}
+                minH="10rem"
+                pointerEvents="none"
+              ></Box>
+            </Box>
+          )}
+          <Flex
+            {...navFlexSetting}
+            position="relative"
+            top={homePage ? '5rem' : '0'}
+          >
             <main> {children}</main>
           </Flex>
         </Box>
