@@ -42,8 +42,7 @@ export default function Quoteable({ book }: IQuoteableProps) {
   const [selected, setSelected] = useState(null);
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
-    setSelected(hash);
-    console.log(hash);
+    if (hash) setSelected(hash);
   }, []);
 
   return (
