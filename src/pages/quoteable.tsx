@@ -10,17 +10,16 @@ import {
   ListItem,
   useColorMode,
   useColorModeValue,
+  Link,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import Layout from 'src/layouts/Layout';
 import { booksRef, getBooks, getQuotes, quotesRef } from 'src/lib/firebase';
+import NextLink from 'next/link';
+
 export interface IQuoteableProps {
   books: IBook[];
   quotes: [];
-}
-
-interface IBook {
-  title;
 }
 
 export async function getStaticProps() {
@@ -31,35 +30,29 @@ export async function getStaticProps() {
   // const [books] = await Promise.all([booksPromise]);
   // By returning { props: posts }, the Blog component
   // will receive `posts` as a prop at build time
+
   return {
     props: { books },
   };
 }
 
 export default function IQuoteable({ books, quotes }: IQuoteableProps) {
-  const [book, setBook] = useState({});
   return (
     <Layout>
       <Flex flexDirection="column">
-        <Main book={book}></Main>
+        <Main></Main>
         <Divider orientation="horizontal" my="1rem"></Divider>
-        <BookList books={books} setBook={setBook}></BookList>
+        <BooksList books={books}></BooksList>
       </Flex>
     </Layout>
   );
 }
 
-function Main({ book }) {
-  const preview = { href: book.preview, external: true };
-
+function Main(props) {
   return (
     <Flex flexDirection="column">
       <Flex flexDirection="column" justifyContent="center">
-        <Text>
-          The following books are highlights made from my Kindle. Note some
-          quotes may have formatting issues as they're simply snippets taken
-          while reading.
-        </Text>
+        <Text>The following books are highlights made from my Kindle.</Text>
         <Text fontSize="xl" mt="1rem" alignSelf="center" fontWeight="bold">
           Select a book to see my highlights!
         </Text>
@@ -68,64 +61,27 @@ function Main({ book }) {
   );
 }
 
-function BookList({ books, setBook }) {
-  return (
-    <Flex
-      flexDirection="column"
-      rounded="md"
-      p=".5rem"
-      justifyContent="flex-start"
-    >
-      <VStack>
-        {books.map((item) => {
-          return <Book book={item}></Book>;
-        })}
-      </VStack>
-    </Flex>
-  );
+export interface IBooksListProps {
+  books: IBook[];
 }
 
-function Book({ book }) {
-  const [expanded, setExpanded] = useState(false);
-  const bg = useColorModeValue('gray.100', 'blue.800');
-  console.log(book);
+export function BooksList({ books }: IBooksListProps) {
   return (
-    <Box
-      borderColor="gray.500"
-      borderRadius="sm"
-      width="100%"
-      border="1px"
-      p="1rem .5rem"
-      bg={bg}
-      onClick={() => setExpanded(!expanded)}
-      cursor="pointer"
-    >
-      <Flex flexDirection="column">
-        <Heading as="h2" fontSize="lg">
-          {book.title}
-        </Heading>
-        <Heading as="h4" fontSize="xs" color="gray.500">
-          {book.authors.join(', ')}
-        </Heading>
-        <Text mt="1rem" fontWeight="bold">
-          {'>'} Highlights ({book.quotes.length})
-        </Text>
-        {expanded ? <Quotes quotes={book.quotes}></Quotes> : <></>}
-      </Flex>
-    </Box>
-  );
-}
-
-function Quotes({ quotes }) {
-  return (
-    <UnorderedList>
-      {quotes.map((quote, index) => {
+    <Flex flexDir="column">
+      {books.map((book, index) => {
         return (
-          <ListItem key={index} my="1rem" ml={'2rem'}>
-            {quote}
-          </ListItem>
+          <NextLink href={`quotes/${book.id}`}>
+            <Flex key={index} mb="1rem" flexDir="column">
+              <Heading fontSize="md" as={'button'} textAlign="left">
+                {book.title}
+              </Heading>
+              <Box color="gray.500" fontSize="sm">
+                {book.authors.join(', ')}
+              </Box>
+            </Flex>
+          </NextLink>
         );
       })}
-    </UnorderedList>
+    </Flex>
   );
 }

@@ -48,10 +48,10 @@ export default function Layout({
     router.push('/home');
   };
 
-  const MotionBox = motion.custom(Box);
-  const MotionButton = motion.custom(Button);
-  const MotionHeader = motion.custom(Heading);
-  const MotionText = motion.custom(Text);
+  const MotionBox = motion(Box);
+  const MotionButton = motion(Button);
+  const MotionHeader = motion(Heading);
+  const MotionText = motion(Text);
 
   const boxVariants = {
     initial: {
