@@ -1,33 +1,16 @@
 import {
-  Box,
-  Divider,
   Flex,
-  Grid,
   Heading,
   Text,
   List,
-  UnorderedList,
-  VStack,
   ListItem,
-  useColorMode,
   useColorModeValue,
-  ListIcon,
-  ListItemProps,
   Icon,
   Link,
-  LinkBox,
-  LinkOverlay,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import Layout from 'src/layouts/Layout';
-import {
-  getBook,
-  getBooks,
-  getBookPaths,
-  getQuotes,
-  quotesRef,
-  booksRef,
-} from 'src/lib/firebase';
+import { getBook, getBookPaths } from 'src/lib/firebase';
 import { FaHashtag } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
@@ -56,9 +39,16 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Quoteable({ book }: IQuoteableProps) {
+  const [selected, setSelected] = useState(null);
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    setSelected(hash);
+    console.log(hash);
+  }, []);
+
   return (
     <Layout>
-      <Flex flexDirection="column" scrollBehavior="smooth">
+      <Flex flexDirection="column">
         <Flex flexDirection="column">
           <Heading as="h2" fontSize="lg">
             {book.title}
@@ -69,39 +59,63 @@ export default function Quoteable({ book }: IQuoteableProps) {
           <Text mt="1rem" fontWeight="bold">
             Highlights ({book.quotes.length})
           </Text>
-          <Quotes quotes={book.quotes}></Quotes>
+          <Quotes
+            quotes={book.quotes}
+            selected={selected}
+            setSelected={setSelected}
+          ></Quotes>
         </Flex>
       </Flex>
     </Layout>
   );
 }
 
-function Quotes({ quotes }) {
+function Quotes({ quotes, selected, setSelected }) {
+  const bg = useColorModeValue('yellow.300', 'yellow.800');
+
   return (
-    <UnorderedList>
+    <List>
       {quotes.map((quote, index) => {
         return (
-          <Link
+          <ListItem
+            my="1rem"
+            ml={'2rem'}
+            p={'.5rem'}
+            bg={selected == index ? bg : ''}
             key={index}
-            id={index}
-            href={`#${index}`}
-            css={{ scrollMarginBlock: '5rem' }}
+            borderRadius="md"
+            role="group"
           >
-            <ListItem my="1rem" ml={'2rem'} role="group" cursor="pointer">
-              {quote}{' '}
+            {quote}{' '}
+            <Link
+              key={index}
+              id={index}
+              href={`#${index}`}
+              css={{ scrollMarginBlock: '10rem' }}
+              as={'a'}
+              role="group"
+            >
+              {' '}
               <Icon
                 opacity={0}
                 as={FaHashtag}
                 color="green.500"
                 _groupHover={{ opacity: 1 }}
+                _groupFocus={{
+                  opacity: 1,
+                }}
                 aria-label="anchor"
                 outline="none"
-                _focus={{ opacity: 1, boxShadow: 'outline' }}
+                focusable={false}
+                cursor="pointer"
+                onClick={(e) => {
+                  setSelected(index);
+                }}
               />
-            </ListItem>
-          </Link>
+            </Link>
+          </ListItem>
         );
       })}
-    </UnorderedList>
+    </List>
   );
 }
