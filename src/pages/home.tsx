@@ -15,9 +15,9 @@ import { motion } from 'framer-motion';
 
 export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
-  const MotionFlex = motion.custom(Flex);
-  const MotionImage = motion.custom(Image);
-  const MotionText = motion.custom(Text);
+  const MotionFlex = motion(Flex);
+  const MotionImage = motion(Image);
+  const MotionText = motion(Text);
   const { colorMode } = useColorMode();
   const homeInfo: ILink = {
     href: 'https://www.google.com/maps/place/North+Bethesda,+MD/@39.0430774,-77.1551229,13z/data=!3m1!4b1!4m5!3m4!1s0x89b7cc3bfabff901:0x50407ec368483348!8m2!3d39.0445535!4d-77.1188678',
