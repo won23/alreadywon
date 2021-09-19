@@ -56,16 +56,6 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Quoteable({ book }: IQuoteableProps) {
-  const router = useRouter();
-  useEffect(() => {
-    let id = router.pathname.match(/#([a-z0-9]+)/gi);
-    if (id) {
-      // i will show the modal
-    } else {
-      // something else
-    }
-  }, [router.pathname]);
-
   return (
     <Layout>
       <Flex flexDirection="column" scrollBehavior="smooth">
@@ -79,43 +69,37 @@ export default function Quoteable({ book }: IQuoteableProps) {
           <Text mt="1rem" fontWeight="bold">
             Highlights ({book.quotes.length})
           </Text>
-          <Quotes quotes={book.quotes} bookId={book.id}></Quotes>
+          <Quotes quotes={book.quotes}></Quotes>
         </Flex>
       </Flex>
     </Layout>
   );
 }
 
-function Quotes({ quotes, bookId }) {
+function Quotes({ quotes }) {
   return (
     <UnorderedList>
       {quotes.map((quote, index) => {
         return (
-          <LinkBox
+          <Link
             key={index}
-            // onClick={(e) => e.preventDefault()}
+            id={index}
+            href={`#${index}`}
+            css={{ scrollMarginBlock: '5rem' }}
           >
-            <ListItem
-              my="1rem"
-              ml={'2rem'}
-              role="group"
-              // cursor="pointer"
-              css={{ scrollMarginBlock: '6.875rem' }}
-            >
+            <ListItem my="1rem" ml={'2rem'} role="group" cursor="pointer">
               {quote}{' '}
-              {/* <LinkOverlay href={`#${index}`}>
-                <Icon
-                  opacity={0}
-                  as={FaHashtag}
-                  color="green.500"
-                  _groupHover={{ opacity: 1 }}
-                  aria-label="anchor"
-                  outline="none"
-                  _focus={{ opacity: 1, boxShadow: 'outline' }}
-                />
-              </LinkOverlay> */}
+              <Icon
+                opacity={0}
+                as={FaHashtag}
+                color="green.500"
+                _groupHover={{ opacity: 1 }}
+                aria-label="anchor"
+                outline="none"
+                _focus={{ opacity: 1, boxShadow: 'outline' }}
+              />
             </ListItem>
-          </LinkBox>
+          </Link>
         );
       })}
     </UnorderedList>
