@@ -6,13 +6,13 @@ import {
   Image,
   Text,
   Divider,
+  useColorModeValue,
   useColorMode,
 } from '@chakra-ui/react';
 import Layout from '../layouts';
 import Reference, { ILink } from '../components/Reference';
 import customTheme from 'src/styles/theme';
 import { motion } from 'framer-motion';
-
 export interface IHomeProps {}
 export default function Home(props: IHomeProps) {
   const MotionFlex = motion(Flex);
@@ -23,6 +23,8 @@ export default function Home(props: IHomeProps) {
     href: 'https://www.google.com/maps/place/North+Bethesda,+MD/@39.0430774,-77.1551229,13z/data=!3m1!4b1!4m5!3m4!1s0x89b7cc3bfabff901:0x50407ec368483348!8m2!3d39.0445535!4d-77.1188678',
     external: true,
   };
+  const fontColor = useColorModeValue('black', 'white');
+  const fontColorWeb = useColorModeValue('white', 'white');
 
   const flexVariants = {
     initial: {
@@ -146,8 +148,9 @@ export default function Home(props: IHomeProps) {
                 textAlign={{ base: 'center', md: 'left' }}
                 flex={1}
                 display="inline"
-                color={{ base: 'black', md: 'white' }}
-                mt="3.5rem"
+                color={{ base: fontColor, md: fontColorWeb }}
+                mt={{ base: '1rem', md: '3.5rem' }}
+                mb={{ base: '1rem', md: 0 }}
               >
                 <Text mb=".5rem">Hello world!</Text>
                 I'm <Reference>Tim Won</Reference>.
@@ -233,7 +236,7 @@ export default function Home(props: IHomeProps) {
             </Heading>
             <Text>
               I'm flattered. Find more information at my{' '}
-              <Reference link={{ href: '/contact' }}>Contact</Reference> page
+              <Reference link={{ href: '/contact' }}>contact</Reference> page
             </Text>
           </Flex>
         </MotionFlex>
